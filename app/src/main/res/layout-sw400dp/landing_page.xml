@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_new">
+
+    <LinearLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/wt5"
+        android:orientation="vertical"
+
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.55"
+            android:alpha="1"
+            android:background="@color/transparent"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.18">
+
+
+            </android.support.v4.view.ViewPager>
+
+            <LinearLayout
+                android:id="@+id/ll_dots"
+                android:layout_width="@dimen/lldots_width_400"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="1.82"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <ImageView
+                    android:id="@+id/bullet1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bullet_height"
+                    android:layout_weight="1"
+                    android:src="@drawable/bullet" />
+
+                <ImageView
+                    android:id="@+id/bullet2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bullet_height"
+                    android:layout_weight="1"
+                    android:src="@drawable/bullet" />
+
+                <ImageView
+                    android:id="@+id/bullet3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bullet_height"
+                    android:layout_weight="1"
+                    android:src="@drawable/bullet" />
+
+                <ImageView
+                    android:id="@+id/bullet4"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bullet_height"
+                    android:layout_weight="1"
+                    android:src="@drawable/bullet" />
+
+                <ImageView
+                    android:id="@+id/bullet5"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bullet_height"
+                    android:layout_weight="1"
+                    android:src="@drawable/bullet" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sepLine_height_300"
+            android:scaleType="fitXY"
+            android:src="@drawable/sepline_new" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.454"
+            android:background="@color/transparent"
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/loginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_400_24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.1"
+                android:gravity="center"
+
+                android:text="@string/sign_up"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_400_24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/use_as_a_guest"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_400_24sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

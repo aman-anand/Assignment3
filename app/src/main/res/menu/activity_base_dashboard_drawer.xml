@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:title="Tournaments" />
+        <item
+            android:id="@+id/nav_gallery"
+
+            android:title="Events" />
+        <item
+            android:id="@+id/nav_slideshow"
+
+            android:title="Seasons" />
+        <item
+            android:id="@+id/nav_manage"
+
+            android:title="My Teams" />
+        <item
+            android:id="@+id/following"
+            android:title="Following" />
+        <item
+            android:id="@+id/settings"
+            android:title="Settings" />
+        <item
+            android:id="@+id/logout"
+            android:title="Logout" />
+    </group>
+
+
+</menu>
+
