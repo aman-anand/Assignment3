@@ -25,7 +25,7 @@ public class List {
     private String venue;
     @SerializedName("imageKey")
     @Expose
-    private Object imageKey;
+    private String imageKey;
     @SerializedName("startDate")
     @Expose
     private String startDate;
@@ -74,7 +74,7 @@ public class List {
      * @param adminDetails
      * @param name
      */
-    public List(String guid, String hypableType, Integer id, String name, String game, String venue, Object imageKey, String startDate, String endDate, String hypeType, Integer hypes, Integer hits, AdminDetails adminDetails, String timestamp, Integer creatorUserId) {
+    public List(String guid, String hypableType, Integer id, String name, String game, String venue, String imageKey, String startDate, String endDate, String hypeType, Integer hypes, Integer hits, AdminDetails adminDetails, String timestamp, Integer creatorUserId) {
         super();
         this.guid = guid;
         this.hypableType = hypableType;
@@ -171,15 +171,15 @@ public class List {
         return this;
     }
 
-    public Object getImageKey() {
+    public String getImageKey() {
         return imageKey;
     }
 
-    public void setImageKey(Object imageKey) {
+    public void setImageKey(String imageKey) {
         this.imageKey = imageKey;
     }
 
-    public List withImageKey(Object imageKey) {
+    public List withImageKey(String imageKey) {
         this.imageKey = imageKey;
         return this;
     }

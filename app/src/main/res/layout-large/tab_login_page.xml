@@ -174,7 +174,7 @@
                 <ImageView
                     android:id="@+id/headerImage"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/tb_login_line_new" />
 

@@ -49,6 +49,6 @@
     <string name="hype">Hype</string>
     <string name="tournaments">Tournaments</string>
     <string name="message_followers">Message followers</string>
-    <string name="notification_message">Notification Message</string>
+    <string name="notification_message"> Notification Message</string>
     <string name="title_activity_drawer">DrawerActivity</string>
 </resources>

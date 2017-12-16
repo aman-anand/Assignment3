@@ -156,6 +156,7 @@ public class LoginActivity extends Manager implements ShareLoginStatus {
         AppController.getInstance().setLoggedInUser(loggedInUser);
         progressBar.setVisibility(View.INVISIBLE);
         startActivity(new Intent(context, ProfileActivity.class));
+        finish();
         Toast.makeText(context, "LOGIN SUCCESS:: LOgin Activity", Toast.LENGTH_SHORT).show();
     }
 

@@ -79,10 +79,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/playerName"
+            android:layout_marginBottom="10sp"
             android:layout_marginTop="10sp"
+            android:layout_above="@id/socialContainer"
             android:gravity="center"
-
-
             android:textColor="@color/dark_bg_light_primary_text"
             android:textSize="@dimen/textSize_country"
             android:visibility="visible" />
@@ -91,10 +91,8 @@
             android:id="@+id/socialContainer"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_below="@+id/email"
-
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10sp"
             android:orientation="horizontal"
             android:visibility="visible">
 

@@ -3,462 +3,454 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/login_head"
-        android:orientation="vertical">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@drawable/login_head"-->
+        <!--android:orientation="vertical">-->
 
-        <RelativeLayout
-            android:id="@+id/topLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="260sp"
-            android:gravity="center|left">
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/topLinearLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="260sp"-->
+            <!--android:gravity="center|left">-->
 
-            <ImageView
-                android:id="@+id/blur_imageView"
-                android:layout_width="match_parent"
-                android:layout_height="260sp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:scaleType="fitXY" />
+            <!--<ImageView-->
+                <!--android:id="@+id/blur_imageView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="260sp"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:scaleType="fitXY" />-->
 
-            <RelativeLayout
-                android:id="@+id/RelativeMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/RelativeMenu"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
 
-                <ImageView
-                    android:id="@+id/menuBtn"
-                    android:layout_width="60sp"
-                    android:layout_height="60sp"
-                    android:paddingLeft="14sp"
-                    android:paddingTop="16sp"
+                <!--<ImageView-->
+                    <!--android:id="@+id/menuBtn"-->
+                    <!--android:layout_width="60sp"-->
+                    <!--android:layout_height="60sp"-->
+                    <!--android:paddingLeft="14sp"-->
+                    <!--android:paddingTop="16sp"-->
 
-                    android:src="@drawable/menu_btn_profile" />
-            </RelativeLayout>
+                    <!--android:src="@drawable/menu_btn_profile" />-->
+            <!--</RelativeLayout>-->
 
-            <ImageView
-                android:id="@+id/universalImage"
-                android:layout_width="60sp"
-                android:layout_height="60sp"
-                android:layout_alignParentRight="true"
-                android:paddingRight="14sp"
-                android:paddingTop="16sp"
-                android:src="@drawable/ic_search_black_24dp"
-                android:visibility="visible" />
+            <!--<ImageView-->
+                <!--android:id="@+id/universalImage"-->
+                <!--android:layout_width="60sp"-->
+                <!--android:layout_height="60sp"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:paddingRight="14sp"-->
+                <!--android:paddingTop="16sp"-->
+                <!--android:src="@drawable/ic_search_black_24dp"-->
+                <!--android:visibility="visible" />-->
 
-            <com.tournamentedition.android.views.FutureNormalEditText
-                android:id="@+id/sendNotificationEditText"
-                android:layout_width="480dp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/tab_nm_bg"
-                android:gravity="top"
-                android:lines="3"
-                android:maxLength="@integer/notificationLength"
-                android:padding="10dp"
-                android:textColor="@color/text_color"
-                android:textColorHint="@color/text_color"
-                android:textSize="20sp"
-                android:visibility="invisible" />
+            <!--<android.support.v7.widget.AppCompatEditText-->
+                <!--android:id="@+id/sendNotificationEditText"-->
+                <!--android:layout_width="480dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:background="@drawable/nm_bg"-->
+                <!--android:gravity="top"-->
+                <!--android:lines="3"-->
+                <!--android:maxLength="@integer/notificationLength"-->
+                <!--android:padding="10dp"-->
+                <!--android:textColor="@color/text_color"-->
+                <!--android:textColorHint="@color/text_color"-->
+                <!--android:textSize="20sp"-->
+                <!--android:visibility="invisible" />-->
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/dpImageView"
-                android:layout_width="115sp"
-                android:layout_height="115sp"
-                android:layout_marginLeft="130sp"
-                android:layout_marginTop="56dp"
-                android:padding="2sp"
-                android:paddingBottom="10sp"
-                android:src="@drawable/user_profile_icon"
-                android:visibility="visible"
-                app:civ_border_color="@color/grey"
-                app:civ_border_width="3dp" />
+            <!--<de.hdodenhof.circleimageview.CircleImageView-->
+                <!--android:id="@+id/dpImageView"-->
+                <!--android:layout_width="115sp"-->
+                <!--android:layout_height="115sp"-->
+                <!--android:layout_marginLeft="130sp"-->
+                <!--android:layout_marginTop="56dp"-->
+                <!--android:padding="2sp"-->
+                <!--android:paddingBottom="10sp"-->
+                <!--android:src="@drawable/user_profile_icon"-->
+                <!--android:visibility="visible"-->
+                <!--app:civ_border_color="@color/grey"-->
+                <!--app:civ_border_width="3dp" />-->
 
-            <RelativeLayout
-                android:id="@+id/player_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30sp"
-                android:layout_marginTop="75dp"
-                android:layout_toRightOf="@+id/dpImageView"
-                android:visibility="visible">
-
-                <TextView
-                    android:id="@+id/nameTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@android:color/white"
-                    android:textSize="20dp" />
-
-                <!--<TextView-->
-                <!--android:id="@+id/city"-->
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/player_layout"-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="5sp"-->
-                <!--android:layout_below="@+id/nameTextView"-->
-                <!--android:text=""-->
-                <!--android:textSize="17.5sp"-->
-                <!--android:textColor="@android:color/white" />-->
+                <!--android:layout_marginLeft="30sp"-->
+                <!--android:layout_marginTop="75dp"-->
+                <!--android:layout_toRightOf="@+id/dpImageView"-->
+                <!--android:visibility="visible">-->
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/nameTextView"
-                    android:layout_marginTop="4sp">
+                <!--<TextView-->
+                    <!--android:id="@+id/nameTextView"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text=""-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--android:textSize="20dp" />-->
+
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/city"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginTop="5sp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_below="@+id/nameTextView"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:text=""&ndash;&gt;-->
+                <!--&lt;!&ndash;android:textSize="17.5sp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:textColor="@android:color/white" />&ndash;&gt;-->
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/nameTextView"-->
+                    <!--android:layout_marginTop="4sp">-->
+
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/eml_new"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:singleLine="true"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text=""&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textColor="@android:color/white"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textSize="17sp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:visibility="gone"&ndash;&gt;-->
+                    <!--&lt;!&ndash;/>&ndash;&gt;-->
 
 
                     <!--<TextView-->
-                    <!--android:id="@+id/eml_new"-->
+                        <!--android:id="@+id/email_new_text_view"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:text=""-->
+                        <!--android:textColor="@android:color/white"-->
+                        <!--android:textSize="17dp"-->
+                        <!--android:visibility="visible"-->
+
+                        <!--/>-->
+
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/twitterImageView"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/email_new_text_view"-->
+                        <!--android:layout_marginTop="11sp"-->
+                        <!--android:src="@drawable/twitter_icon"-->
+                        <!--android:visibility="gone" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/twitterTextView"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/email_new_text_view"-->
+                        <!--android:layout_marginLeft="10sp"-->
+                        <!--android:layout_marginTop="11sp"-->
+                        <!--android:layout_toRightOf="@+id/twitterImageView"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:text="twitteremailid"-->
+                        <!--android:textColor="@android:color/white"-->
+                        <!--android:textSize="17sp"-->
+                        <!--android:visibility="gone" />-->
+
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/bullet_tab"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/email_new_text_view"-->
+                        <!--android:layout_marginLeft="20sp"-->
+                        <!--android:layout_marginTop="16.5sp"-->
+                        <!--android:layout_toRightOf="@+id/twitterTextView"-->
+                        <!--android:src="@drawable/aaaa"-->
+                        <!--android:visibility="gone"-->
+
+                        <!--/>-->
+
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/twitchImageView_opt"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/email_new_text_view"-->
+                        <!--android:layout_marginLeft="20sp"-->
+                        <!--android:layout_marginTop="15sp"-->
+                        <!--android:layout_toRightOf="@+id/bullet_tab"-->
+                        <!--android:src="@drawable/twitch"-->
+                        <!--android:visibility="gone" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/twitch_text_view_opt"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/email_new_text_view"-->
+                        <!--android:layout_marginLeft="12sp"-->
+                        <!--android:layout_marginTop="11sp"-->
+                        <!--android:layout_toRightOf="@+id/twitchImageView_opt"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:text="twitchemailid"-->
+                        <!--android:textColor="@android:color/white"-->
+                        <!--android:textSize="17dp"-->
+                        <!--android:visibility="gone" />-->
+
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/twitchImageView"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/email_new_text_view"-->
+                        <!--android:layout_marginTop="11sp"-->
+                        <!--android:src="@drawable/twitch"-->
+                        <!--android:visibility="gone" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/twitch_text_view"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/email_new_text_view"-->
+                        <!--android:layout_marginLeft="10sp"-->
+                        <!--android:layout_marginTop="7.5sp"-->
+                        <!--android:layout_toRightOf="@+id/twitchImageView"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:text="twitchemailid"-->
+                        <!--android:textColor="@android:color/white"-->
+                        <!--android:textSize="20dp"-->
+                        <!--android:visibility="gone" />-->
+
+
+                <!--</RelativeLayout>-->
+
+
+            <!--</RelativeLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/viewlayout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="2sp"-->
+                <!--android:layout_above="@+id/optionLayout"-->
+                <!--android:background="#ffffff">-->
+
+                <!--<View-->
+                    <!--android:id="@+id/view1"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="2sp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:background="#85E0FF"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:visibility="visible" />-->
+
+                <!--<View-->
+                    <!--android:id="@+id/view2"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="2sp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:background="#85E0FF"-->
+                    <!--android:visibility="invisible" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/optionLayout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:padding="10sp"-->
+                <!--android:visibility="visible"-->
+                <!--android:weightSum="3">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/notificationTextView"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center_horizontal"-->
+                    <!--android:padding="5sp"-->
                     <!--android:singleLine="true"-->
-                    <!--android:text=""-->
+                    <!--android:text="NOTIFICATIONS"-->
                     <!--android:textColor="@android:color/white"-->
-                    <!--android:textSize="17sp"-->
-                    <!--android:visibility="gone"-->
+                    <!--android:textSize="20sp"-->
+
                     <!--/>-->
 
+                <!--<TextView-->
+                    <!--android:id="@+id/currentTournamentTextView"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_toLeftOf="@+id/historyTournamentTextView"-->
+                    <!--android:layout_toRightOf="@+id/notificationTextView"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center"-->
+                    <!--android:padding="5sp"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:text="HYPE"-->
+                    <!--android:textColor="@color/black"-->
+                    <!--android:textSize="20sp" />-->
 
-                    <TextView
-                        android:id="@+id/email_new_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text=""
-                        android:textColor="@android:color/white"
-                        android:textSize="17dp"
-                        android:visibility="visible"
+                <!--<TextView-->
+                    <!--android:id="@+id/historyTournamentTextView"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center_horizontal"-->
+                    <!--android:padding="5sp"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:text="TOURNAMENTS"-->
+                    <!--android:textColor="@color/black"-->
 
-                        />
-
-
-                    <ImageView
-                        android:id="@+id/twitterImageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/email_new_text_view"
-                        android:layout_marginTop="11sp"
-                        android:src="@drawable/twitter_icon"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@+id/twitterTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/email_new_text_view"
-                        android:layout_marginLeft="10sp"
-                        android:layout_marginTop="11sp"
-                        android:layout_toRightOf="@+id/twitterImageView"
-                        android:singleLine="true"
-                        android:text="twitteremailid"
-                        android:textColor="@android:color/white"
-                        android:textSize="17sp"
-                        android:visibility="gone" />
+                    <!--android:textSize="20sp" />-->
+            <!--</LinearLayout>-->
 
 
-                    <ImageView
-                        android:id="@+id/bullet_tab"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/email_new_text_view"
-                        android:layout_marginLeft="20sp"
-                        android:layout_marginTop="16.5sp"
-                        android:layout_toRightOf="@+id/twitterTextView"
-                        android:src="@drawable/tab_dot_img_my_profile"
-                        android:visibility="gone"
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/sendNotificationLayout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:padding="10sp"-->
 
-                        />
+                <!--android:visibility="gone">-->
 
+                <!--<TextView-->
+                    <!--android:id="@+id/sendNotificationTextView"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--android:layout_marginLeft="100sp"-->
+                    <!--android:gravity="center_horizontal"-->
+                    <!--android:padding="5sp"-->
+                    <!--android:singleLine="true"-->
 
-                    <ImageView
-                        android:id="@+id/twitchImageView_opt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/email_new_text_view"
-                        android:layout_marginLeft="20sp"
-                        android:layout_marginTop="15sp"
-                        android:layout_toRightOf="@+id/bullet_tab"
-                        android:src="@drawable/twitch"
-                        android:visibility="gone" />
+                    <!--android:text="MESSAGE FOLLOWERS"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--android:textSize="20sp" />-->
 
-                    <TextView
-                        android:id="@+id/twitch_text_view_opt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/email_new_text_view"
-                        android:layout_marginLeft="12sp"
-                        android:layout_marginTop="11sp"
-                        android:layout_toRightOf="@+id/twitchImageView_opt"
-                        android:singleLine="true"
-                        android:text="twitchemailid"
-                        android:textColor="@android:color/white"
-                        android:textSize="17dp"
-                        android:visibility="gone" />
+            <!--</RelativeLayout>-->
+
+        <!--</RelativeLayout>-->
 
 
-                    <ImageView
-                        android:id="@+id/twitchImageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/email_new_text_view"
-                        android:layout_marginTop="11sp"
-                        android:src="@drawable/twitch"
-                        android:visibility="gone" />
+        <!--<LinearLayout-->
 
-                    <TextView
-                        android:id="@+id/twitch_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/email_new_text_view"
-                        android:layout_marginLeft="10sp"
-                        android:layout_marginTop="7.5sp"
-                        android:layout_toRightOf="@+id/twitchImageView"
-                        android:singleLine="true"
-                        android:text="twitchemailid"
-                        android:textColor="@android:color/white"
-                        android:textSize="20dp"
-                        android:visibility="gone" />
-
-
-                </RelativeLayout>
-
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/viewlayout"
-                android:layout_width="match_parent"
-                android:layout_height="2sp"
-                android:layout_above="@+id/optionLayout"
-                android:background="#ffffff">
-
-                <View
-                    android:id="@+id/view1"
-                    android:layout_width="match_parent"
-                    android:layout_height="2sp"
-                    android:layout_weight="1"
-                    android:background="#85E0FF"
-                    android:textColor="@color/white"
-                    android:visibility="visible" />
-
-                <View
-                    android:id="@+id/view2"
-                    android:layout_width="match_parent"
-                    android:layout_height="2sp"
-                    android:layout_weight="1"
-                    android:background="#85E0FF"
-                    android:visibility="invisible" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/optionLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:padding="10sp"
-                android:visibility="visible"
-                android:weightSum="3">
-
-                <TextView
-                    android:id="@+id/notificationTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:padding="5sp"
-                    android:singleLine="true"
-                    android:text="NOTIFICATIONS"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-
-                    />
-
-                <TextView
-                    android:id="@+id/currentTournamentTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/historyTournamentTextView"
-                    android:layout_toRightOf="@+id/notificationTextView"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="5sp"
-                    android:singleLine="true"
-                    android:text="HYPE"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/historyTournamentTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:padding="5sp"
-                    android:singleLine="true"
-                    android:text="TOURNAMENTS"
-                    android:textColor="@color/black"
-
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/sendNotificationLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:padding="10sp"
-
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/sendNotificationTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="100sp"
-                    android:gravity="center_horizontal"
-                    android:padding="5sp"
-                    android:singleLine="true"
-
-                    android:text="MESSAGE FOLLOWERS"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-
-
-        <LinearLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/login_signup_bg"
-            android:orientation="vertical">
-
-
-            <com.tournamentedition.android.swipelistview_lib.SwipeMenuListView
-                android:id="@+id/NotificationListView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/optionLayout"
-                android:layout_marginTop="5sp"
-                android:divider="@null"
-                android:dividerHeight="0dp"
-                android:paddingLeft="16sp"
-                android:paddingRight="16sp"
-                android:visibility="gone">
-
-            </com.tournamentedition.android.swipelistview_lib.SwipeMenuListView>>
-
-
-            <!--<GridView-->
-            <!--android:id="@+id/Upcoming_History_List"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="match_parent"-->
-            <!--android:layout_alignParentLeft="true"-->
-            <!--android:layout_alignParentStart="true"-->
-            <!--android:layout_below="@+id/optionLayout"-->
-            <!--android:verticalSpacing="10dp"-->
-            <!--android:horizontalSpacing="10dp"-->
-            <!--android:stretchMode="columnWidth"-->
-            <!--android:layout_marginTop="10sp"-->
-            <!--android:layout_marginLeft="10sp"-->
-            <!--android:layout_marginRight="10sp"-->
-
-            <!--android:numColumns="2"-->
-            <!--/>-->
+            <!--android:background="@drawable/login_signup_bg"-->
+            <!--android:orientation="vertical">-->
 
 
-            <com.tournamentedition.android.horizontalgrid.Tab_TabTabTwoWayGridView
+            <!--<com.tournamentedition.android.swipelistview_lib.SwipeMenuListView-->
+                <!--android:id="@+id/NotificationListView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_below="@+id/optionLayout"-->
+                <!--android:layout_marginTop="5sp"-->
+                <!--android:divider="@null"-->
+                <!--android:dividerHeight="0dp"-->
+                <!--android:paddingLeft="16sp"-->
+                <!--android:paddingRight="16sp"-->
+                <!--android:visibility="gone">-->
 
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/hype_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:layout_marginBottom="@dimen/tour_list_margin_bottom_large"
-                android:layout_marginLeft="@dimen/tour_list_margin_left_large"
-                android:layout_marginTop="@dimen/tour_list_margin_top_large"
-                android:fastScrollEnabled="true"
-                android:visibility="visible"
-                app:cacheColorHint="#E8E8E8"
-                app:columnWidth="@dimen/tour_list_width_large"
-                app:gravity="center"
-                app:horizontalSpacing="@dimen/tour_list_margin_horizontal_large"
-                app:numColumns="auto_fit"
-                app:numRows="2"
-                app:scrollDirectionLandscape="horizontal"
-                app:scrollDirectionPortrait="vertical"
-                app:smoothScrollbar="true"
-
-                app:verticalSpacing="@dimen/tour_list_margin_vertical_large" />
+            <!--</com.tournamentedition.android.swipelistview_lib.SwipeMenuListView>>-->
 
 
-            <com.tournamentedition.android.horizontalgrid.Tab_TabTabTwoWayGridView
+            <!--&lt;!&ndash;<GridView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/Upcoming_History_List"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_alignParentLeft="true"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_alignParentStart="true"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_below="@+id/optionLayout"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:verticalSpacing="10dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:horizontalSpacing="10dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:stretchMode="columnWidth"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginTop="10sp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginLeft="10sp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="10sp"&ndash;&gt;-->
 
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/Upcoming_History_List"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:layout_marginBottom="@dimen/tour_list_margin_bottom_large"
-                android:layout_marginLeft="@dimen/tour_list_margin_left_large"
-                android:layout_marginTop="@dimen/tour_list_margin_top_large"
-                android:fastScrollEnabled="true"
-                android:visibility="visible"
-                app:cacheColorHint="#E8E8E8"
-                app:columnWidth="@dimen/tour_list_width_large"
-                app:gravity="center"
-                app:horizontalSpacing="@dimen/tour_list_margin_horizontal_large"
-                app:numColumns="auto_fit"
-                app:numRows="2"
-                app:scrollDirectionLandscape="horizontal"
-                app:scrollDirectionPortrait="vertical"
-                app:smoothScrollbar="true"
-
-                app:verticalSpacing="@dimen/tour_list_margin_vertical_large" />
+            <!--&lt;!&ndash;android:numColumns="2"&ndash;&gt;-->
+            <!--&lt;!&ndash;/>&ndash;&gt;-->
 
 
-        </LinearLayout>
-    </LinearLayout>
+            <!--<com.tournamentedition.android.horizontalgrid.Tab_TabTabTwoWayGridView-->
 
-    <ProgressBar
-        android:id="@+id/google_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="false"
-        android:minHeight="40dp"
-        android:minWidth="40dp"
-        android:visibility="gone" />
+                <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+                <!--android:id="@+id/hype_list"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
 
-    <ProgressBar
-        android:id="@+id/Progress_load_more"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        android:indeterminateDrawable="@drawable/tab_costum_progress_bar"
-        android:padding="3dp"
-        android:visibility="gone" />
+                <!--android:layout_marginBottom="@dimen/tour_list_margin_bottom_large"-->
+                <!--android:layout_marginLeft="@dimen/tour_list_margin_left_large"-->
+                <!--android:layout_marginTop="@dimen/tour_list_margin_top_large"-->
+                <!--android:fastScrollEnabled="true"-->
+                <!--android:visibility="visible"-->
+                <!--app:cacheColorHint="#E8E8E8"-->
+                <!--app:columnWidth="@dimen/tour_list_width_large"-->
+                <!--app:gravity="center"-->
+                <!--app:horizontalSpacing="@dimen/tour_list_margin_horizontal_large"-->
+                <!--app:numColumns="auto_fit"-->
+                <!--app:numRows="2"-->
+                <!--app:scrollDirectionLandscape="horizontal"-->
+                <!--app:scrollDirectionPortrait="vertical"-->
+                <!--app:smoothScrollbar="true"-->
 
-    <ProgressBar
-        android:id="@+id/default_progress"
-        android:layout_width="30sp"
-        android:layout_height="30sp"
+                <!--app:verticalSpacing="@dimen/tour_list_margin_vertical_large" />-->
 
-        android:layout_gravity="center"
-        android:layout_marginTop="50sp"
-        android:minHeight="20sp"
-        android:minWidth="20sp"
-        android:visibility="gone" />
+
+            <!--<com.tournamentedition.android.horizontalgrid.Tab_TabTabTwoWayGridView-->
+
+                <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+                <!--android:id="@+id/Upcoming_History_List"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+
+                <!--android:layout_marginBottom="@dimen/tour_list_margin_bottom_large"-->
+                <!--android:layout_marginLeft="@dimen/tour_list_margin_left_large"-->
+                <!--android:layout_marginTop="@dimen/tour_list_margin_top_large"-->
+                <!--android:fastScrollEnabled="true"-->
+                <!--android:visibility="visible"-->
+                <!--app:cacheColorHint="#E8E8E8"-->
+                <!--app:columnWidth="@dimen/tour_list_width_large"-->
+                <!--app:gravity="center"-->
+                <!--app:horizontalSpacing="@dimen/tour_list_margin_horizontal_large"-->
+                <!--app:numColumns="auto_fit"-->
+                <!--app:numRows="2"-->
+                <!--app:scrollDirectionLandscape="horizontal"-->
+                <!--app:scrollDirectionPortrait="vertical"-->
+                <!--app:smoothScrollbar="true"-->
+
+                <!--app:verticalSpacing="@dimen/tour_list_margin_vertical_large" />-->
+
+
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+    <!--<ProgressBar-->
+        <!--android:id="@+id/google_progress"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:indeterminate="false"-->
+        <!--android:minHeight="40dp"-->
+        <!--android:minWidth="40dp"-->
+        <!--android:visibility="gone" />-->
+
+
+
+    <!--<ProgressBar-->
+        <!--android:id="@+id/default_progress"-->
+        <!--android:layout_width="30sp"-->
+        <!--android:layout_height="30sp"-->
+
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="50sp"-->
+        <!--android:minHeight="20sp"-->
+        <!--android:minWidth="20sp"-->
+        <!--android:visibility="gone" />-->
 </FrameLayout>

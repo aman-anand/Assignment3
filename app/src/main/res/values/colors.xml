@@ -8,6 +8,18 @@
     <color name="grey">#757575</color>
     <color name="black_overlay">#66000000</color>
     <color name="transparent">#00000000</color>
+    <color name="a">#2F363C</color>
+    <color name="b">#50373B</color>
+    <color name="c">#5E4D3B</color>
+    <color name="d">#313B33</color>
+    <color name="e">#4E504B</color>
+    <color name="f">#314F5B</color>
+    <color name="g">#4C555C</color>
+    <color name="h">#385253</color>
+    <color name="i">#4E4946</color>
+    <color name="j">#1D4657</color>
+    <color name="k">#5D6C73</color>
+    <color name="l">#A28F6E</color>
 
     <color name="red_50">#FFEBEE</color>
     <color name="red_100">#FFCDD2</color>
