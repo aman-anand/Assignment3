@@ -6,6 +6,7 @@
 
     <LinearLayout
         android:id="@+id/rootLayout"
+        android:tag="400"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/wt5"
@@ -16,7 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.55"
+            android:layout_weight="0.56"
             android:alpha="1"
             android:background="@color/transparent"
             android:orientation="vertical"
@@ -26,7 +27,7 @@
                 android:id="@+id/vp_slider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.18">
+                android:layout_weight="0.15">
 
 
             </android.support.v4.view.ViewPager>
@@ -37,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginBottom="3dp"
-                android:layout_weight="1.82"
+                android:layout_weight="1.85"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="5">
@@ -90,7 +91,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.454"
+            android:layout_weight="1.44"
             android:background="@color/transparent"
             android:orientation="vertical"
             android:weightSum="3">
@@ -98,8 +99,8 @@
             <TextView
                 android:id="@+id/loginBtn"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:layout_weight="1.1"
                 android:gravity="center"
                 android:text="@string/login"
                 android:textColor="@color/white"
@@ -107,8 +108,8 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.1"
+                android:layout_height="0dp"
+                android:layout_weight="0.85"
                 android:gravity="center"
 
                 android:text="@string/sign_up"
@@ -117,7 +118,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/use_as_a_guest"

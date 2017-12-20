@@ -71,12 +71,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String s=getResources().getString(R.string.type);
         if (getResources().getBoolean(R.bool.isTablet)) {
             isTab = true;
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         } else {
             isTab = false;
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
         }
     }
 
@@ -98,7 +99,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             showAlert((Activity) context, errorMessage, 1);
-            Log.e("error", str);
+            Log.e(((Activity) context).getClass().getSimpleName(),"error"+str);
         }
     }
 }

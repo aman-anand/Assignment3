@@ -14,34 +14,34 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="0dp"
+            android:layout_weight="0.97">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="35sp"
+                android:layout_marginBottom="25sp"
                 android:scaleType="fitXY"
                 android:src="@drawable/login_head" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
-                android:layout_width="80sp"
-                android:layout_height="70sp"
+                android:layout_width="55sp"
+                android:layout_height="55sp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/user_profile_icon"
                 app:civ_border_color="@color/grey"
-                app:civ_border_width="1dp" />
+                app:civ_border_width="0.5sp" />
 
             <ImageView
                 android:id="@+id/image_logo"
-                android:layout_width="120dp"
-                android:layout_height="60dp"
+                android:layout_width="110dp"
+                android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40sp"
-                android:scaleType="fitXY"
+
                 android:src="@drawable/registration_logo" />
 
             <TextView
@@ -53,22 +53,21 @@
                 android:layout_below="@id/image_logo"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="LOGIN"
+                android:text="@string/login"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.01">
+            android:layout_height="0dp"
+            android:layout_weight="0.85">
 
             <LinearLayout
                 android:id="@+id/credentials"
-                android:layout_width="250dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="30dp"
                 android:orientation="vertical">
 
                 <android.support.v7.widget.AppCompatEditText
@@ -81,7 +80,7 @@
 
                     android:textColor="@color/white"
                     android:textColorHint="@color/grey"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     app:backgroundTint="@color/grey" />
 
                 <android.support.v7.widget.AppCompatEditText
@@ -95,7 +94,7 @@
                     android:singleLine="true"
                     android:textColor="@color/white"
                     android:textColorHint="@color/grey"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     app:backgroundTint="@color/grey" />
 
             </LinearLayout>
@@ -104,8 +103,8 @@
         <RelativeLayout
             android:id="@+id/alter_screen"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.99">
+            android:layout_height="0dp"
+            android:layout_weight="1.18">
 
             <LinearLayout
                 android:id="@+id/or_line"
@@ -119,7 +118,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="0.5sp"
                     android:layout_weight="0.9"
                     android:foreground="@color/grey_500" />
 
@@ -134,7 +133,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="0.5sp"
                     android:layout_weight="0.9"
                     android:foreground="@color/grey_500" />
             </LinearLayout>
@@ -142,10 +141,8 @@
             <LinearLayout
                 android:id="@+id/social"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="65dp"
-
+                android:layout_height="50sp"
+                android:layout_marginTop="60sp"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
@@ -172,13 +169,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="80sp"
+                android:id="@+id/loginbar"
                 android:layout_alignParentBottom="true"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/headerImage"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/login_line_new" />
 
@@ -189,6 +187,7 @@
                     android:layout_below="@+id/headerImage"
                     android:background="@drawable/sign_login_button"
                     android:gravity="center"
+                    android:textSize="20sp"
                     android:text="LOGIN"
                     android:textColor="@color/white" />
 
@@ -202,9 +201,9 @@
     <RelativeLayout
         android:id="@+id/inflated_options"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="220dp"
         android:layout_gravity="bottom"
-        android:visibility="invisible">
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="match_parent"
@@ -233,7 +232,7 @@
             android:layout_below="@+id/header2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="13dp"
-            android:text="NEW TO TOURNAMENT EDITION?"
+            android:text="@string/new_to_tournament_edition"
             android:textColor="@color/blue_grey_400"
             android:textSize="14sp" />
 
@@ -244,9 +243,9 @@
             android:layout_below="@+id/text1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:text="SIGNUP"
+            android:text="@string/sign_up"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="19sp" />
 
         <TextView
             android:id="@+id/text3"
@@ -255,7 +254,7 @@
             android:layout_below="@+id/text2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:text="USE AS A GUEST"
+            android:text="@string/use_as_a_guest"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -266,17 +265,17 @@
             android:layout_below="@+id/text3"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:text="FORGOT PASSWORD?"
+            android:text="@string/forgot_password"
             android:textColor="@color/white"
             android:textSize="13sp" />
 
         <ImageView
             android:id="@+id/sep_line"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_width="250sp"
+            android:layout_height="0.5sp"
             android:layout_below="@+id/text4"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="5sp"
             android:scaleType="fitXY"
             android:src="@drawable/sepline_new" />
 
@@ -295,7 +294,7 @@
                 android:gravity="center"
                 android:text="FEATURES"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -304,7 +303,7 @@
                 android:gravity="center"
                 android:text="RESEND VERIFICATION MAIL"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -313,7 +312,7 @@
                 android:gravity="center"
                 android:text="HELP"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
         </LinearLayout>
     </RelativeLayout>
 

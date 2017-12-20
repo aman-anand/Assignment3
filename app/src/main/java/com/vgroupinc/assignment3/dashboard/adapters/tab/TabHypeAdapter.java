@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.vgroupinc.assignment3.Network.NetworkConfig;
+import com.vgroupinc.assignment3.base.Network.NetworkConfig;
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.dashboard.bean.HypeSearch.HypeSearchBean;
-import com.vgroupinc.assignment3.picasso.PicassoImp;
+import com.vgroupinc.assignment3.base.picasso.PicassoImp;
 import com.vgroupinc.assignment3.utils.Utils;
 
 /**

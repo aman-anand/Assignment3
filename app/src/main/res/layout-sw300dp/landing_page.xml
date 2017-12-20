@@ -2,10 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@drawable/background_new">
 
     <LinearLayout
         android:id="@+id/rootLayout"
+        android:tag="300"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/wt1"

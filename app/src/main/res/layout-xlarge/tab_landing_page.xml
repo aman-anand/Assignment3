@@ -101,7 +101,8 @@
     <ImageView
         android:id="@+id/seperator"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
+        android:layout_height="2dp"
+        android:scaleType="fitXY"
         android:layout_above="@+id/bottomBar"
         android:src="@drawable/sepline_new" />
 

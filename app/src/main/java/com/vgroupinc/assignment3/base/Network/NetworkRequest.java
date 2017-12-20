@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.Network;
+package com.vgroupinc.assignment3.base.Network;
 
 import android.content.Context;
 import android.util.Log;
@@ -32,7 +32,7 @@ import java.util.Map;
 public class NetworkRequest {
     private static final String TAG = NetworkRequest.class.getSimpleName();
     private static NetworkRequest mInstance;
-    private static Context mCtx;
+    private  Context mCtx;
 
     private static ShareLoginStatus shareLoginStatus;
 
@@ -43,7 +43,6 @@ public class NetworkRequest {
 
     private NetworkRequest(Context context) {
         mCtx = context;
-
         mRequestQueue = getRequestQueue();
 
     }

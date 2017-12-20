@@ -16,11 +16,22 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="des_1">Follow your friends, To\'s or favorite players to see when they \n are playing next and track their \n tournament progress and placements</string>
-    <string name="des_2">Create, edit and view seasons, events, teams &amp; tournaments of \n any kind on any platform online or offline</string>
-    <string name="des_3">Get notification on upcoming events or even in tournament \n notification right before a match starts \n on your phone, tablet, or Android Wear device.</string>
-    <string name="des_4">Preregister yourself, a team or a specific member of a \n team for any  tournament.</string>
-    <string name="des_5">Automatic bracket making based on Seeding, Teams and locations.</string>
+    <string name="des_1_300">Follow your friends, To\'s or favorite players to see when\n they are playing next and track their \n tournament progress and placements</string>
+    <string name="des_2_300">Create, edit and view seasons, events, teams &amp; tournaments of \n any kind on any platform online or offline</string>
+    <string name="des_3_300">Get notification on upcoming events or even in tournament \n notification right before a match starts \n on your phone, tablet, or Android Wear device.</string>
+    <string name="des_4_300">Preregister yourself, a team or a specific member of a \n team for any  tournament.</string>
+    <string name="des_5_300">Automatic bracket making based on Seeding, Teams and locations.</string>
+    <string name="des_1_350">Follow your friends, To\'s or favorite players to see when\n they are playing next and track their \n tournament progress and placements</string>
+    <string name="des_2_350">Create, edit and view seasons, events, teams &amp;\n tournaments of any kind on any platform online or offline</string>
+    <string name="des_3_350">Get notification on upcoming events or even in tournament \n notification right before a match starts \n on your phone, tablet, or Android Wear device.</string>
+    <string name="des_4_350">Preregister yourself, a team or a specific member of a team \n for any  tournament.</string>
+    <string name="des_5_350">Automatic bracket making based on Seeding, Teams and\n locations.</string>
+    <string name="des_1_400">Follow your friends, To\'s or favorite players to see when they are\n playing next and track their\n tournament progress and placements</string>
+    <string name="des_2_400">Create, edit and view seasons, events, teams &amp; tournaments of any\n kind on any platform online or offline</string>
+    <string name="des_3_400">Get notification on upcoming events or even in tournament\n notification right before a match starts\n on your phone, tablet, or Android Wear device.</string>
+    <string name="des_4_400">Preregister yourself, a team or a specific member of a team for any\n tournament.</string>
+    <string name="des_5_400">Automatic bracket making based on Seeding, Teams and locations.</string>
+
     <string name="title_1">follow</string>
     <string name="title_2">online and offline</string>
     <string name="title_3">notifications</string>

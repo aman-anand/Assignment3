@@ -60,6 +60,7 @@ public class HypeSearchBean {
     }
 
     public java.util.List<List> getList() {
+
         return list;
     }
 

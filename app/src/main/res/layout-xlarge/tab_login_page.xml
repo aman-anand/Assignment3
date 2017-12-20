@@ -18,18 +18,18 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="0.95">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="40sp"
+                android:layout_marginBottom="36sp"
                 android:scaleType="fitXY"
                 android:src="@drawable/login_head" />
 
             <ImageView
                 android:id="@+id/image_logo"
-                android:layout_width="140sp"
+                android:layout_width="130sp"
                 android:layout_height="70sp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30sp"
@@ -46,12 +46,12 @@
                 android:gravity="center"
                 android:text="@string/login"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="17sp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
-                android:layout_width="90sp"
-                android:layout_height="90sp"
+                android:layout_width="78sp"
+                android:layout_height="78sp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
 
@@ -64,11 +64,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.01">
+            android:layout_weight="1.13">
 
             <LinearLayout
                 android:id="@+id/credentials"
-                android:layout_width="300dp"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:orientation="vertical">
@@ -106,7 +106,7 @@
             android:id="@+id/alter_screen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="0.92">
 
             <LinearLayout
                 android:id="@+id/or_line"
@@ -142,31 +142,31 @@
             <LinearLayout
                 android:id="@+id/social"
                 android:layout_width="600sp"
-                android:layout_height="0sp"
-                android:layout_above="@id/loginLay"
+                android:layout_height="62sp"
+
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5sp"
+                android:layout_marginTop="45sp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="50sp"
+                    android:layout_height="match_parent"
 
                     android:layout_weight="1"
                     android:src="@drawable/fb1" />
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="50sp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:src="@drawable/gpl" />
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="50sp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
 
                     android:src="@drawable/twitch" />
@@ -175,7 +175,7 @@
             <LinearLayout
                 android:id="@+id/loginLay"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="115sp"
                 android:layout_alignParentBottom="true"
                 android:orientation="vertical">
 
@@ -239,7 +239,7 @@
             android:layout_marginTop="5dp"
             android:text="@string/new_to_tournament_edition"
             android:textColor="@color/blue_grey_400"
-            android:textSize="18sp" />
+            android:textSize="19sp" />
 
         <TextView
             android:id="@+id/text2"
@@ -250,8 +250,9 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="@string/signup"
+            android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="19sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/text3"
@@ -259,10 +260,10 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/text4"
             android:layout_centerHorizontal="true"
-
+            android:textStyle="bold"
             android:text="@string/use_as_a_guest"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="19sp" />
 
         <TextView
             android:id="@+id/text4"
@@ -271,10 +272,10 @@
             android:layout_above="@+id/sep_line"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12sp"
-
+            android:textStyle="bold"
             android:text="@string/forgot_password"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="15sp" />
 
         <ImageView
             android:id="@+id/sep_line"

@@ -35,7 +35,7 @@ public class AlertBuilder {
     public void getDialog(final Activity context, String message, int title) {
         context.setProgressBarVisibility(false);
         AlertDialog alertDialog;
-        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.Theme_AppCompat_DayNight_Dialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.Theme_AppCompat_DayNight_Dialog_Alert);
         switch (title) {
             case 0:
                 builder.setTitle(context.getString(R.string.alert_success));
@@ -56,8 +56,8 @@ public class AlertBuilder {
                 dialogInterface.dismiss();
             }
         });
-        alertDialog = builder.create();
-        alertDialog.show();
+
+        builder.show();
 
 
     }

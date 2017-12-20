@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.ui.landing.adapter;
+package com.vgroupinc.assignment3.login.landing.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vgroupinc.assignment3.R;
-import com.vgroupinc.assignment3.ui.landing.bean.Walkthrough;
+import com.vgroupinc.assignment3.login.landing.bean.Walkthrough;
 
 import java.util.ArrayList;
 

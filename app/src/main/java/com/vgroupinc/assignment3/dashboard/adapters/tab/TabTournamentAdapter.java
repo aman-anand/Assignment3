@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.dashboard.bean.Tournaments.ActiveTournaments;
-import com.vgroupinc.assignment3.picasso.PicassoImp;
+import com.vgroupinc.assignment3.base.picasso.PicassoImp;
 import com.vgroupinc.assignment3.utils.Utils;
 
 /**
@@ -47,7 +47,12 @@ public class TabTournamentAdapter extends RecyclerView.Adapter<TabTournamentAdap
         String date = Utils.formatDate(tournaments.getList().get(position).getStartDate());
         holder.nameTv.setText(tournaments.getList().get(position).getName());
         holder.dateTv.setText(date);
-        PicassoImp.getInstance().setImage(tournaments.getList().get(position).getImageKey(), activity, position, holder.imageView);
+        if (tournaments.getList().get(position).getHype()) {
+            PicassoImp.getInstance().setImageBackground("Tournament",tournaments.getList().get(position).getImageKey(),activity,position,holder.imageView);
+        }else{
+            PicassoImp.getInstance().setImage(tournaments.getList().get(position).getImageKey(), activity, position, holder.imageView);
+        }
+//        PicassoImp.getInstance().setImage(tournaments.getList().get(position).getImageKey(), activity, position, holder.imageView);
 
 
     }

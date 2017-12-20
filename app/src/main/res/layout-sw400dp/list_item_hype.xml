@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/transparent"
-    android:paddingBottom="8sp"
+    android:paddingBottom="15sp"
     android:paddingLeft="7sp"
     android:paddingRight="7sp"
-    android:paddingTop="5sp">
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150sp"
+        android:layout_height="130sp"
         android:background="@color/transparent_40"
         android:gravity="center_vertical">
 
@@ -24,7 +24,7 @@
             android:scaleType="fitXY" />
 
         <LinearLayout
-            android:layout_width="490sp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
@@ -50,7 +50,7 @@
                 android:singleLine="true"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/location"
@@ -60,7 +60,7 @@
                 android:singleLine="true"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/date01"
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="17sp" />
         </LinearLayout>
 
 

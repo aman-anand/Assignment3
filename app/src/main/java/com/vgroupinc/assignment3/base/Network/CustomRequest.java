@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.Network;
+package com.vgroupinc.assignment3.base.Network;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -39,6 +39,7 @@ public class CustomRequest<T> extends Request<T> {
         this.tClass = clazz;
         this.headers = headers;
         this.listener = listener;
+
     }
 
     public CustomRequest(boolean b, String url, Class clazz, Map<String, String> headers,

@@ -1,5 +1,7 @@
 package com.vgroupinc.assignment3.dashboard.bean.HypeSearch;
 
+import android.text.TextUtils;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -94,7 +96,11 @@ public class List {
     }
 
     public String getGuid() {
-        return guid;
+        if (!TextUtils.isEmpty(guid)){
+            return guid;
+        }else{
+            return "";
+        }
     }
 
     public void setGuid(String guid) {
@@ -107,7 +113,12 @@ public class List {
     }
 
     public String getHypableType() {
-        return hypableType;
+        if (!TextUtils.isEmpty(hypableType)){
+            return hypableType;
+        }else{
+            return "";
+        }
+
     }
 
     public void setHypableType(String hypableType) {
@@ -133,10 +144,15 @@ public class List {
     }
 
     public String getName() {
-        return name;
+        if (!TextUtils.isEmpty(name)){
+            return name;
+        }else{
+            return "";
+        }
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
@@ -146,7 +162,12 @@ public class List {
     }
 
     public String getGame() {
-        return game;
+        if (!TextUtils.isEmpty(game)){
+            return game;
+        }else{
+            return "";
+        }
+
     }
 
     public void setGame(String game) {
@@ -159,7 +180,12 @@ public class List {
     }
 
     public String getVenue() {
-        return venue;
+        if (!TextUtils.isEmpty(venue)){
+            return venue;
+        }else{
+            return "";
+        }
+
     }
 
     public void setVenue(String venue) {
@@ -172,7 +198,12 @@ public class List {
     }
 
     public String getImageKey() {
-        return imageKey;
+        if (!TextUtils.isEmpty(imageKey)){
+            return imageKey;
+        }else{
+            return "";
+        }
+
     }
 
     public void setImageKey(String imageKey) {
@@ -185,7 +216,12 @@ public class List {
     }
 
     public String getStartDate() {
-        return startDate;
+        if (!TextUtils.isEmpty(startDate)){
+            return startDate;
+        }else{
+            return "";
+        }
+
     }
 
     public void setStartDate(String startDate) {

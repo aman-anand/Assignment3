@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.ui.landing.bean;
+package com.vgroupinc.assignment3.login.landing.bean;
 
 /**
  * Created by DELL on 11/30/2017.

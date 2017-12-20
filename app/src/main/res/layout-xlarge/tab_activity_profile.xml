@@ -11,7 +11,7 @@
         android:id="@+id/profileLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.9"
+        android:layout_weight="0.95"
         android:background="@drawable/login_signup_bg">
 
         <RelativeLayout
@@ -23,13 +23,9 @@
             android:layout_centerInParent="true"
             android:layout_marginBottom="20sp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/nm_bg" />
 
-            <android.support.v7.widget.AppCompatEditText
+
+            <EditText
                 android:id="@+id/messageEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -42,7 +38,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/grey"
                 android:visibility="visible"
-                app:backgroundTint="@color/transparent" />
+                 />
 
         </RelativeLayout>
 
@@ -55,9 +51,9 @@
 
         <ImageView
             android:id="@+id/navBtn"
-            android:layout_width="53sp"
+            android:layout_width="48sp"
 
-            android:layout_height="53sp"
+            android:layout_height="48sp"
             android:layout_marginLeft="20sp"
             android:layout_marginStart="20sp"
             android:layout_marginTop="20sp"
@@ -83,10 +79,11 @@
             android:layout_alignTop="@+id/profile_image"
             android:layout_marginLeft="15sp"
             android:layout_marginTop="90sp"
-
+            android:fontFamily="@font/futura_tee_bold"
             android:layout_toRightOf="@+id/profile_image"
             android:gravity="center"
             android:textAllCaps="true"
+            android:textStyle="bold"
             android:textColor="@color/dark_bg_light_primary_text"
             android:textSize="@dimen/textSize_PlayerName_400" />
 
@@ -145,10 +142,10 @@
         <LinearLayout
             android:id="@+id/scrollIndicator"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_above="@+id/options"
+            android:layout_height="2dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="50sp"
+            android:layout_marginBottom="75sp"
+
             android:background="@color/transparent">
 
 
@@ -170,7 +167,7 @@
         <TextView
             android:id="@+id/messageFollowers"
             android:layout_width="match_parent"
-            android:layout_height="50sp"
+            android:layout_height="70sp"
             android:layout_alignParentBottom="true"
             android:gravity="center"
             android:padding="5dp"
@@ -184,7 +181,7 @@
         <LinearLayout
             android:id="@+id/options"
             android:layout_width="match_parent"
-            android:layout_height="50sp"
+            android:layout_height="75sp"
             android:layout_alignParentBottom="true"
 
             android:orientation="horizontal"

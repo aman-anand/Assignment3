@@ -1,11 +1,12 @@
-package com.vgroupinc.assignment3.Network;
+package com.vgroupinc.assignment3.base.Network;
 
 /**
  * Created by DELL on 12/4/2017.
  */
 
 public class NetworkConfig {
-    public static final String BASE_URL = "https://api.tournamentedition.com/tournamentapis/web/srf/services/";
+//    public static final String BASE_URL = "https://api.tournamentedition.com/tournamentapis/web/srf/services/";
+    public static final String BASE_URL = "https://teapis.tournamentedition.com/tournamentapis/v1/services/";
     public static final String LOGIN = "network/login";
     public static final String LOGIN_PROD = "https://teapis.tournamentedition.com/tournamentapis/v1/services/network/login";
     public static final String PROFILE = "network/user/profile";

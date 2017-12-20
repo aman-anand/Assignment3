@@ -3,14 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/transparent"
-    android:paddingBottom="8sp"
+    android:paddingBottom="15sp"
     android:paddingLeft="7sp"
-    android:paddingRight="7sp"
-    android:paddingTop="5sp">
+    android:paddingRight="7sp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150sp"
+        android:layout_height="130sp"
         android:background="@color/transparent_40"
         android:gravity="center_vertical">
 
@@ -19,34 +18,40 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0.8"
-            android:background="@color/grey"
-            android:padding="0.5sp"
+            android:background="@color/white"
+            android:padding="0.4sp"
             android:scaleType="fitXY" />
 
-        <TextView
-            android:id="@+id/tournamentName"
-            android:layout_width="320sp"
+        <LinearLayout
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/futura_tee_bold"
-            android:gravity="center"
-            android:singleLine="true"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center">
 
-        <TextView
-            android:id="@+id/date01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tournamentName"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tournamentName"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/futura_tee_bold"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/date01"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
 
     </RelativeLayout>
 </RelativeLayout>

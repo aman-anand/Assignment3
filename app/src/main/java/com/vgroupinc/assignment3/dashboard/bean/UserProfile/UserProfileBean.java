@@ -55,6 +55,7 @@ public class UserProfileBean {
     @SerializedName("twitchLink")
     @Expose
     private Object twitchLink;
+    private boolean isTwitterAv=false,isFbAv=false,isTwichAv=false;
 
     /**
      * No args constructor for use in serialization

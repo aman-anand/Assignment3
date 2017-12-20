@@ -8,6 +8,8 @@
     <string name="yes">Yes</string>
     <string name="confirm">Confirmation</string>
     <bool name="isTablet">true</bool>
+    <string name="type">xlarge</string>
+
     <string name="No">NO</string>
     <string name="oAuth2CI">1103974943-u3eqav6tp1747m4ud82vb2da9h71ejeo.apps.googleusercontent.com</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -16,10 +18,10 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="des_1">Follow your friends, To\'s or favorite players to see when they \n are playing next and track their \n tournament progress and placements</string>
-    <string name="des_2">Create, edit and view seasons, events, teams &amp; tournaments of any \n kind on any platform online or offline</string>
-    <string name="des_3">Get notification on upcoming events or even in tournament \n notification right before a match starts \n on your phone, tablet, or Android Wear device.</string>
-    <string name="des_4">Preregister yourself, a team or a specific member of a team for any \n tournament.</string>
+    <string name="des_1">Follow your friends, To\'s or favorite players to see when they are playing next and track their\n tournament progress and placements</string>
+    <string name="des_2">Create, edit and view seasons, events, teams &amp; tournaments of any kind on any platform online or offline</string>
+    <string name="des_3">Get notification on upcoming events or even in tournament notification right before a match starts \n on your phone, tablet, or Android Wear device.</string>
+    <string name="des_4">Preregister yourself, a team or a specific member of a team for any tournament.</string>
     <string name="des_5">Automatic bracket making based on Seeding, Teams and locations.</string>
     <string name="title_1">follow</string>
     <string name="title_2">online and offline</string>

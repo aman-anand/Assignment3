@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vgroupinc.assignment3.R;
+import com.vgroupinc.assignment3.base.picasso.PicassoImp;
 import com.vgroupinc.assignment3.dashboard.bean.Tournaments.ActiveTournaments;
-import com.vgroupinc.assignment3.picasso.PicassoImp;
 import com.vgroupinc.assignment3.utils.Utils;
 
 /**
@@ -60,7 +60,11 @@ public class TournamentAdapter extends BaseAdapter {
         holder.name.setText(tournament.getList().get(position).getName());
         String date = Utils.formatDate(tournament.getList().get(position).getStartDate());
         holder.date.setText(date);
-        PicassoImp.getInstance().setImage(tournament.getList().get(position).getImageKey(), activity, position, holder.imageView);
+        if (tournament.getList().get(position).getHype()) {
+            PicassoImp.getInstance().setImageBackground("Tournament",tournament.getList().get(position).getImageKey(),activity,position,holder.imageView);
+        }else{
+            PicassoImp.getInstance().setImage(tournament.getList().get(position).getImageKey(), activity, position, holder.imageView);
+        }
         return convertView;
     }
 

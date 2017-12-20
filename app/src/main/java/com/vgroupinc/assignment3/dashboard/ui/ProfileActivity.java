@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.dashboard;
+package com.vgroupinc.assignment3.dashboard.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,13 +28,14 @@ import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.vgroupinc.assignment3.Network.CustomRequest;
-import com.vgroupinc.assignment3.Network.NetworkConfig;
-import com.vgroupinc.assignment3.Network.NetworkRequest;
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.appController.AppController;
 import com.vgroupinc.assignment3.appController.SharedPrefs;
 import com.vgroupinc.assignment3.base.BaseActivity;
+import com.vgroupinc.assignment3.base.Network.CustomRequest;
+import com.vgroupinc.assignment3.base.Network.NetworkConfig;
+import com.vgroupinc.assignment3.base.Network.NetworkRequest;
+import com.vgroupinc.assignment3.base.picasso.PicassoImp;
 import com.vgroupinc.assignment3.dashboard.adapters.HypeAdapter;
 import com.vgroupinc.assignment3.dashboard.adapters.NotificationAdapter;
 import com.vgroupinc.assignment3.dashboard.adapters.TournamentAdapter;
@@ -46,8 +48,7 @@ import com.vgroupinc.assignment3.dashboard.bean.UserProfile.UserProfileBean;
 import com.vgroupinc.assignment3.dashboard.bean.notifications.Notifications;
 import com.vgroupinc.assignment3.dashboard.navbar.NavAdapter;
 import com.vgroupinc.assignment3.dashboard.navbar.NavBean;
-import com.vgroupinc.assignment3.login.LoginActivity;
-import com.vgroupinc.assignment3.picasso.PicassoImp;
+import com.vgroupinc.assignment3.login.ui.LandingPage;
 import com.vgroupinc.assignment3.utils.OnSwipeTouchListener;
 import com.vgroupinc.assignment3.utils.Utils;
 
@@ -80,7 +81,7 @@ public class ProfileActivity extends BaseActivity {
     private int totalCount = 0;
     private Typeface normal, bold;
     private DrawerLayout drawer;
-    private LinearLayout socialContainer, options, scrollIndicator,mainView;
+    private LinearLayout socialContainer, options, scrollIndicator, mainView;
     private RelativeLayout.LayoutParams fullParams = new RelativeLayout.LayoutParams(0, 0);
     private RelativeLayout.LayoutParams swipeParams = new RelativeLayout.LayoutParams(0, 0);
     private NavAdapter navAdapter;
@@ -143,7 +144,10 @@ public class ProfileActivity extends BaseActivity {
         mainView = findViewById(R.id.mainView);
         progressBar = findViewById(R.id.progress);
         listView = findViewById(R.id.listView);
+        listView.setVerticalScrollBarEnabled(false);
         listView_drawer = findViewById(R.id.list_drawer);
+        listView_drawer.setVerticalScrollBarEnabled(false);
+
         syncToServer = findViewById(R.id.syncToServer);
         playerName_drawer = findViewById(R.id.playerName_drawer);
         location_drawer = findViewById(R.id.location_drawer);
@@ -165,7 +169,7 @@ public class ProfileActivity extends BaseActivity {
         notification = findViewById(R.id.notification);
         hype = findViewById(R.id.hype);
         tournament = findViewById(R.id.tournament);
-        listView = findViewById(R.id.listView);
+
         progressBar.setVisibility(View.GONE);
         messageFollowers.setVisibility(View.GONE);
         socialContainer.setVisibility(View.INVISIBLE);
@@ -175,6 +179,8 @@ public class ProfileActivity extends BaseActivity {
             mRecyclerView = mainView.findViewById(R.id.recyclerView);
             mLayoutManager = new GridLayoutManager(context, getResources().getInteger(R.integer.spanCount), GridLayoutManager.HORIZONTAL, false);
             mRecyclerView.setLayoutManager(mLayoutManager);
+            mRecyclerView.setVerticalScrollBarEnabled(false);
+            mRecyclerView.setHorizontalScrollBarEnabled(false);
             messageFollowersLayout = findViewById(R.id.messageFollowersLayout);
             messageFollowersLayout.setVisibility(View.GONE);
             tab_hype_adapter = new TabHypeAdapter(apiData.getHype().getHypeSearch(), context);
@@ -271,29 +277,49 @@ public class ProfileActivity extends BaseActivity {
 
             }
         });
+
         tournament.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalCount = 0;
-                changeUI(tournament);
-                setData(TOURNA);
+                if (tournamentSelected)
+                    return;
+                if ( apiData.getTournaB().getTournaments() != null) {
+                    totalCount = 0;
+                    changeUI(tournament);
+                    setData(TOURNA);
+                } else {
+                    changeUI(tournament);
+                }
 
             }
         });
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalCount = 0;
-                changeUI(notification);
-                setData(NOTIF);
+                if (notifSelected)
+                    return;
+                if ( apiData.getNotifB().getNotifications() != null) {
+                    totalCount = 0;
+                    changeUI(notification);
+                    setData(NOTIF);
+                } else {
+                    changeUI(notification);
+
+                }
             }
         });
         hype.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalCount = 0;
-                changeUI(hype);
-                setData(HYPE);
+                if (hypeSelected)
+                    return;
+                if (apiData.getHype().getHypeSearch() != null) {
+                    totalCount = 0;
+                    changeUI(hype);
+                    setData(HYPE);
+                } else {
+                    changeUI(hype);
+                }
             }
         });
         navBtn.setOnClickListener(new View.OnClickListener() {
@@ -350,7 +376,7 @@ public class ProfileActivity extends BaseActivity {
                         if (navBean.getNavItem(position - 2).equals(getString(R.string.logout_123))) {
                             SharedPrefs.clearData(context);
                             clearApplicationData();
-                            startActivity(new Intent(context, LoginActivity.class));
+                            startActivity(new Intent(context, LandingPage.class));
                             finish();
                         }
                 }
@@ -374,7 +400,7 @@ public class ProfileActivity extends BaseActivity {
             @Override
             public void onSwipeRight() {
                 super.onSwipeRight();
-                Utils.hideKeyboard(profileLayout, context);
+//                Utils.hideKeyboard(profileLayout, context);
                 if (canSwipeRight) {
                     swipeRight();
                 }
@@ -390,7 +416,7 @@ public class ProfileActivity extends BaseActivity {
             @Override
             public void onSwipeRight() {
                 super.onSwipeRight();
-                Utils.hideKeyboard(profileLayout, context);
+//                Utils.hideKeyboard(profileLayout, context);
                 makeToast("Swipe Right");
                 if (canSwipeRight) {
                     swipeRight();
@@ -451,7 +477,9 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private void swipeRight() {
+
         messageEditText.clearFocus();
+        Utils.hideKeyboard(profileLayout, context);
         dashLeft.setImageResource(R.color.cyan_400);
         dashRight.setImageResource(R.color.grey);
         profile_image.setVisibility(View.VISIBLE);
@@ -460,7 +488,9 @@ public class ProfileActivity extends BaseActivity {
         messageEditText.setText("");
         messageEditText.setVisibility(View.GONE);
         messageFollowers.setVisibility(View.GONE);
-        socialContainer.setVisibility(View.VISIBLE);
+        if (!TextUtils.isEmpty(social_id.getText().toString().trim())) {
+            socialContainer.setVisibility(View.VISIBLE);
+        }
         options.setVisibility(View.VISIBLE);
 
         if (isTab) {
@@ -519,6 +549,7 @@ public class ProfileActivity extends BaseActivity {
                 tournament.setTextColor(getResources().getColor(R.color.white));
                 notification.setTextColor(getResources().getColor(R.color.grey));
                 hype.setTextColor(getResources().getColor(R.color.grey));
+                listView.setVisibility(View.GONE);
                 if (isTab) {
                     listView.setVisibility(View.GONE);
                     mRecyclerView.setVisibility(View.GONE);
@@ -530,6 +561,7 @@ public class ProfileActivity extends BaseActivity {
             case R.id.notification:
                 tournamentSelected = false;
                 hypeSelected = false;
+                listView.setVisibility(View.GONE);
                 notifSelected = true;
                 tournament.setTextColor(getResources().getColor(R.color.grey));
                 notification.setTextColor(getResources().getColor(R.color.white));
@@ -545,7 +577,7 @@ public class ProfileActivity extends BaseActivity {
                 tournamentSelected = false;
                 notifSelected = false;
                 hypeSelected = true;
-
+                listView.setVisibility(View.GONE);
                 tournament.setTextColor(getResources().getColor(R.color.grey));
                 notification.setTextColor(getResources().getColor(R.color.grey));
                 hype.setTextColor(getResources().getColor(R.color.white));
@@ -562,21 +594,23 @@ public class ProfileActivity extends BaseActivity {
 
     private void networkcallToApi(int choice, final int page) {
         headers.put("pagenumber", String.valueOf(page));
-        Response.ErrorListener errorListener = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                handleError(error, context);
-            }
-        };
+
         if (Utils.checkInternet((Activity) context)) {
             switch (choice) {
                 case PROFILE:
-
+                    Response.ErrorListener errorListener = new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            handleError(error, context);
+                        }
+                    };
                     Response.Listener listener = new Response.Listener() {
                         @Override
                         public void onResponse(Object response) {
-                            userProfile = (UserProfileBean) response;
-                            setApiData(PROFILE, userProfile, page);
+                            if (response != null && response instanceof UserProfileBean) {
+                                userProfile = (UserProfileBean) response;
+                                setApiData(PROFILE, userProfile, page);
+                            }
                         }
                     };
                     CustomRequest profileRequest = new CustomRequest(true, NetworkConfig.BASE_URL + NetworkConfig.PROFILE, UserProfileBean.class, headers, listener, errorListener);
@@ -584,53 +618,82 @@ public class ProfileActivity extends BaseActivity {
 
                     break;
                 case NOTIF:
+                    Response.ErrorListener errorListenerNot = new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            handleError(error, context);
+                        }
+                    };
                     Response.Listener notification_listener = new Response.Listener() {
                         @Override
                         public void onResponse(Object response) {
-                            notifications = (Notifications) response;
-                            if (notifications.getList().size() > 0) {
-                                setApiData(NOTIF, notifications, page);
-                            } else {
-                                hideProgress();
-                                apiData.getNotifB().setLoadMore(false);
+                            if (response != null && response instanceof Notifications) {
+                                notifications = (Notifications) response;
+                                if (notifications.getList().size() > 0) {
+                                    setApiData(NOTIF, notifications, page);
+                                } else {
+                                    hideProgress();
+                                    apiData.getNotifB().setLoadMore(false);
+                                }
                             }
+                            hideProgress();
                         }
                     };
-                    CustomRequest notificationRequest = new CustomRequest(true, NetworkConfig.BASE_URL + NetworkConfig.NOTIFICATIONLIST, Notifications.class, headers, notification_listener, errorListener);
+                    CustomRequest notificationRequest = new CustomRequest(true, NetworkConfig.BASE_URL + NetworkConfig.NOTIFICATIONLIST, Notifications.class, headers, notification_listener, errorListenerNot);
                     NetworkRequest.getInstance(context).addToRequestQueue(notificationRequest);
 
                     break;
 
                 case HYPE:
+
                     Response.Listener hype_listener = new Response.Listener() {
                         @Override
                         public void onResponse(Object response) {
-                            hypeSearch = (HypeSearchBean) response;
-                            if (hypeSearch.getList().size() > 0) {
-                                setApiData(HYPE, hypeSearch, page);
-                            } else {
-                                hideProgress();
-                                apiData.getHype().setLoadMore(false);
+                            if (response != null && response instanceof HypeSearchBean) {
+                                hypeSearch = (HypeSearchBean) response;
+                                if (hypeSearch.getList().size() > 0) {
+                                    setApiData(HYPE, hypeSearch, page);
+                                } else {
+                                    hideProgress();
+                                    apiData.getHype().setLoadMore(false);
+                                }
                             }
+                            hideProgress();
                         }
                     };
-                    CustomRequest hypeRequest = new CustomRequest(true, NetworkConfig.BASE_URL + NetworkConfig.HYPESEARCH, HypeSearchBean.class, headers, hype_listener, errorListener);
+                    Response.ErrorListener errorListenerHy = new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            handleError(error, context);
+                        }
+                    };
+                    CustomRequest hypeRequest = new CustomRequest(true, NetworkConfig.BASE_URL + NetworkConfig.HYPESEARCH, HypeSearchBean.class, headers, hype_listener, errorListenerHy);
+
                     NetworkRequest.getInstance(context).addToRequestQueue(hypeRequest);
                     break;
                 case TOURNA:
+                    Response.ErrorListener errorListenerTo = new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            handleError(error, context);
+                        }
+                    };
                     Response.Listener tournament_listener = new Response.Listener() {
                         @Override
                         public void onResponse(Object response) {
-                            tournaments = (ActiveTournaments) response;
-                            if (tournaments.getList().size() > 0) {
-                                setApiData(TOURNA, tournaments, page);
-                            } else {
-                                hideProgress();
-                                apiData.getTournaB().setLoadMore(false);
+                            if (response != null && response instanceof ActiveTournaments) {
+                                tournaments = (ActiveTournaments) response;
+                                if (tournaments.getList().size() > 0) {
+                                    setApiData(TOURNA, tournaments, page);
+                                } else {
+                                    hideProgress();
+                                    apiData.getTournaB().setLoadMore(false);
+                                }
                             }
+                            hideProgress();
                         }
                     };
-                    CustomRequest tournamentRequest = new CustomRequest(true, NetworkConfig.BASE_URL + NetworkConfig.GETACTIVETOURNAMENT + AppController.getInstance().loggedInUser.getUserID(), ActiveTournaments.class, headers, tournament_listener, errorListener);
+                    CustomRequest tournamentRequest = new CustomRequest(true, NetworkConfig.BASE_URL + NetworkConfig.GETACTIVETOURNAMENT + AppController.getInstance().loggedInUser.getUserID(), ActiveTournaments.class, headers, tournament_listener, errorListenerTo);
                     NetworkRequest.getInstance(context).addToRequestQueue(tournamentRequest);
                     break;
             }
@@ -640,7 +703,6 @@ public class ProfileActivity extends BaseActivity {
     }
 
     /**
-     *
      * @param choice integer value denoting choice of request {@link TournamentAdapter}
      * @param object
      * @param page
@@ -654,15 +716,24 @@ public class ProfileActivity extends BaseActivity {
                         (Activity) context,
                         profile_image,
                         R.drawable.user_profile_icon);
-                email.setText(bean.getEmail());
-                socialContainer.setVisibility(View.VISIBLE);
-                social_id.setText(bean.getTwitterUser().getTwitterHandle());
-                listView.setVisibility(View.VISIBLE);
+                if (!TextUtils.isEmpty(bean.getEmail())) {
+                    email.setText(bean.getEmail());
+                    email.setVisibility(View.VISIBLE);
+                } else {
+                    email.setVisibility(View.GONE);
+                }
                 navBean.setName(bean.getPerson().getName());
                 navBean.setImageKey(NetworkConfig.IMAGE_DOWNLOAD_URL + bean.getPerson().getImageKey());
                 navBean.setUserName(bean.getPerson().getUsername());
                 navAdapter = new NavAdapter(navBean, (Activity) context);
                 listView_drawer.setAdapter(navAdapter);
+                if (bean.getTwitterUser() != null &&!TextUtils.isEmpty(bean.getTwitterUser().getTwitterHandle())) {
+                    social_id.setText( bean.getTwitterUser().getTwitterHandle());
+                    socialContainer.setVisibility(View.VISIBLE);
+
+                } else if (bean.getTwitchUser() != null) {
+                    //handle twitch interface
+                }
                 break;
             case NOTIF:
                 Notifications notifications = (Notifications) object;
@@ -709,76 +780,82 @@ public class ProfileActivity extends BaseActivity {
 
 
     private void setData(int choice) {
+        if (canSwipeRight) {
+            return;
+        }
         switch (choice) {
             case NOTIF:
-                listView.setDividerHeight(1);
-                if (apiData.getNotifB().getFirst()) {
-                    notificationAdapter = new NotificationAdapter(apiData.getNotifB().getNotifications(), context);
-                    listView.setAdapter(notificationAdapter);
-                    apiData.getNotifB().setFirst(false);
-                } else {
-                    hideProgress();
-                    listView.setAdapter(notificationAdapter);
-                }
-                if (messageEditText.getVisibility() != View.VISIBLE) {
-                    listView.setVisibility(View.VISIBLE);
+                if (apiData.getNotifB().getNotifications() != null && apiData.getNotifB().getNotifications().getList() != null) {
+                    listView.setDividerHeight(1);
+                    if (apiData.getNotifB().getFirst()) {
+                        notificationAdapter = new NotificationAdapter(apiData.getNotifB().getNotifications(), context);
+                        listView.setAdapter(notificationAdapter);
+                        apiData.getNotifB().setFirst(false);
+                    } else {
+                        hideProgress();
+                        listView.setAdapter(notificationAdapter);
+                    }
+                        listView.setVisibility(View.VISIBLE);
                 }
                 break;
             case HYPE:
-                if (isTab) {
-                    if (apiData.getHype().getFirst()) {
-                        tab_hype_adapter = new TabHypeAdapter(apiData.getHype().getHypeSearch(), context);
-                        mRecyclerView.setAdapter(tab_hype_adapter);
-                        apiData.getHype().setFirst(false);
-                    } else {
-                        hideProgress();
-                        mRecyclerView.setAdapter(tab_hype_adapter);
+                if (apiData.getHype().getHypeSearch() != null && apiData.getHype().getHypeSearch().getList() != null) {
+                    if (isTab) {
+                        if (apiData.getHype().getFirst()) {
+                            tab_hype_adapter = new TabHypeAdapter(apiData.getHype().getHypeSearch(), context);
+                            mRecyclerView.setAdapter(tab_hype_adapter);
+                            apiData.getHype().setFirst(false);
+                        } else {
+                            hideProgress();
+                            mRecyclerView.setAdapter(tab_hype_adapter);
 
-                    }
-                    mRecyclerView.setVisibility(View.VISIBLE);
-                } else {
-                    listView.setDividerHeight(0);
-                    if (apiData.getHype().getFirst()) {
-                        hypeAdapter = new HypeAdapter(context, apiData.getHype().getHypeSearch());
-                        listView.setAdapter(hypeAdapter);
-                        apiData.getHype().setFirst(false);
+                        }
+                        mRecyclerView.setVisibility(View.VISIBLE);
                     } else {
-                        hideProgress();
-                        listView.setAdapter(hypeAdapter);
+                        listView.setDividerHeight(0);
+                        if (apiData.getHype().getFirst()) {
+                            hypeAdapter = new HypeAdapter(context, apiData.getHype().getHypeSearch());
+                            listView.setAdapter(hypeAdapter);
+                            apiData.getHype().setFirst(false);
+                        } else {
+                            hideProgress();
+                            listView.setAdapter(hypeAdapter);
 
+                        }
+                        listView.setVisibility(View.VISIBLE);
                     }
-                    listView.setVisibility(View.VISIBLE);
                 }
 
                 break;
             case TOURNA:
+                if (apiData.getTournaB().getTournaments() != null && apiData.getTournaB().getTournaments().getList() != null) {
+                    if (isTab) {
+                        if (apiData.getTournaB().getFirst()) {
+                            tab_tourna_adapter = new TabTournamentAdapter(apiData.getTournaB().getTournaments(), context, mRecyclerView);
+                            mRecyclerView.setAdapter(tab_tourna_adapter);
+                            changeUI(tournament);
+                            apiData.getTournaB().setFirst(false);
+                        } else {
+                            hideProgress();
 
-                if (isTab) {
-                    if (apiData.getTournaB().getFirst()) {
-                        tab_tourna_adapter = new TabTournamentAdapter(apiData.getTournaB().getTournaments(), context, mRecyclerView);
-                        mRecyclerView.setAdapter(tab_tourna_adapter);
-                        changeUI(tournament);
-                        apiData.getTournaB().setFirst(false);
+                            mRecyclerView.setAdapter(tab_tourna_adapter);
+
+                        }
+                        mRecyclerView.setVisibility(View.VISIBLE);
                     } else {
-                        hideProgress();
+                        listView.setDividerHeight(0);
+                        if (apiData.getTournaB().getFirst()) {
+                            tournamentAdapter = new TournamentAdapter(apiData.getTournaB().getTournaments(), context);
+                            listView.setAdapter(tournamentAdapter);
+                            changeUI(tournament);
+                            apiData.getTournaB().setFirst(false);
+                        } else {
+                            hideProgress();
+                            listView.setAdapter(tournamentAdapter);
 
-                        mRecyclerView.setAdapter(tab_tourna_adapter);
-
+                        }
+                        listView.setVisibility(View.VISIBLE);
                     }
-                    mRecyclerView.setVisibility(View.VISIBLE);
-                } else {
-                    listView.setDividerHeight(0);
-                    if (apiData.getTournaB().getFirst()) {
-                        tournamentAdapter = new TournamentAdapter(apiData.getTournaB().getTournaments(), context);
-                        listView.setAdapter(tournamentAdapter);
-                        changeUI(tournament);
-                        apiData.getTournaB().setFirst(false);
-                    } else {
-                        hideProgress();
-                        listView.setAdapter(tournamentAdapter);
-
-                    }
-                    listView.setVisibility(View.VISIBLE);
                 }
                 break;
         }

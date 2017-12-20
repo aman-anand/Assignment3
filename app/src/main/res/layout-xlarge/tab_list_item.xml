@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="423sp"
-    android:layout_height="155sp"
+    android:layout_width="453sp"
+    android:layout_height="153sp"
     android:background="@color/transparent"
-    android:paddingBottom="13sp"
+    android:paddingBottom="14sp"
     android:paddingLeft="13sp"
     >
 

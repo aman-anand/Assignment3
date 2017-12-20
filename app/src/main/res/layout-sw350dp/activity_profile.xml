@@ -15,22 +15,24 @@
         android:background="@drawable/login_signup_bg"
         android:foreground="@drawable/login_pannel_bg">
 
-        <android.support.v7.widget.AppCompatEditText
+        <EditText
             android:id="@+id/messageEditText"
             android:layout_width="match_parent"
-            android:layout_height="120sp"
+            android:layout_height="100sp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="15sp"
-            android:layout_marginLeft="15sp"
-            android:layout_marginRight="15sp"
-            android:background="@color/transparent"
-            android:foreground="@drawable/nm_bg"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+
+            android:background="@drawable/nm_bg"
             android:gravity="start"
             android:hint="@string/notification_message"
-            android:padding="7dp"
+            android:maxHeight="120sp"
+            android:maxLength="256"
+            android:maxLines="4"
+            android:padding="9dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/grey"
-            app:backgroundTint="@color/transparent" />
+            android:textColorHint="@color/grey" />
 
         <!--<ImageView-->
         <!--android:layout_width="match_parent"-->
@@ -66,7 +68,7 @@
             android:layout_alignParentBottom="true"
             android:layout_below="@id/profile_image"
             android:layout_marginBottom="5sp"
-            android:layout_marginTop="14sp"
+            android:layout_marginTop="8sp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -166,6 +168,7 @@
             android:id="@+id/options"
             android:layout_width="match_parent"
             android:layout_height="50sp"
+            android:layout_marginBottom="5dp"
             android:layout_alignParentTop="true"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -177,7 +180,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="0.9"
                 android:fontFamily="@font/futura_tee_bold"
-                android:gravity="center"
+                android:gravity="right|center_vertical"
                 android:singleLine="true"
                 android:text="@string/notifications"
                 android:textAllCaps="true"
@@ -203,7 +206,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.9"
                 android:fontFamily="@font/futura_tee_bold"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:text="@string/tournaments"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
@@ -233,7 +236,7 @@
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/mF_TS_350"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <ProgressBar
             android:id="@+id/progress"

@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.ui.landing;
+package com.vgroupinc.assignment3.login.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +12,8 @@ import android.widget.TextView;
 
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.base.BaseActivity;
-import com.vgroupinc.assignment3.login.LoginActivity;
-import com.vgroupinc.assignment3.ui.landing.adapter.PageAdapter;
-import com.vgroupinc.assignment3.ui.landing.bean.Walkthrough;
+import com.vgroupinc.assignment3.login.landing.adapter.PageAdapter;
+import com.vgroupinc.assignment3.login.landing.bean.Walkthrough;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -77,12 +76,37 @@ public class LandingPage extends BaseActivity {
             sliderPagerAdapter = new PageAdapter(LandingPage.this, slider_image_list_tab);
 
         } else {
-            slider_image_list = new ArrayList<>();
-            slider_image_list.add(new Walkthrough(getString(R.string.title_1), getString(R.string.des_1), R.drawable.walk_banner_1, 1));
-            slider_image_list.add(new Walkthrough(getString(R.string.title_2), getString(R.string.des_2), R.drawable.walk_banner_2, 2));
-            slider_image_list.add(new Walkthrough(getString(R.string.title_3), getString(R.string.des_3), R.drawable.walk_banner_3, 3));
-            slider_image_list.add(new Walkthrough(getString(R.string.title_4), getString(R.string.des_4), R.drawable.walk_banner_4, 4));
-            slider_image_list.add(new Walkthrough(getString(R.string.title_5), getString(R.string.des_5), R.drawable.walk_banner_5, 5));
+            switch (Integer.parseInt(rootLayout_mobile.getTag().toString().trim())) {
+                case 300:
+                    slider_image_list = new ArrayList<>();
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_1), getString(R.string.des_1_300), R.drawable.walk_banner_1, 1));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_2), getString(R.string.des_2_300), R.drawable.walk_banner_2, 2));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_3), getString(R.string.des_3_300), R.drawable.walk_banner_3, 3));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_4), getString(R.string.des_4_300), R.drawable.walk_banner_4, 4));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_5), getString(R.string.des_5_300), R.drawable.walk_banner_5, 5));
+//                    sliderPagerAdapter = new PageAdapter(LandingPage.this, slider_image_list);
+                    break;
+                case 350:
+                    slider_image_list = new ArrayList<>();
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_1), getString(R.string.des_1_350), R.drawable.walk_banner_1, 1));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_2), getString(R.string.des_2_350), R.drawable.walk_banner_2, 2));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_3), getString(R.string.des_3_350), R.drawable.walk_banner_3, 3));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_4), getString(R.string.des_4_350), R.drawable.walk_banner_4, 4));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_5), getString(R.string.des_5_350), R.drawable.walk_banner_5, 5));
+//                    sliderPagerAdapter = new PageAdapter(LandingPage.this, slider_image_list);
+                    break;
+                case 400:
+
+                    slider_image_list = new ArrayList<>();
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_1), getString(R.string.des_1_400), R.drawable.walk_banner_1, 1));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_2), getString(R.string.des_2_400), R.drawable.walk_banner_2, 2));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_3), getString(R.string.des_3_400), R.drawable.walk_banner_3, 3));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_4), getString(R.string.des_4_400), R.drawable.walk_banner_4, 4));
+                    slider_image_list.add(new Walkthrough(getString(R.string.title_5), getString(R.string.des_5_400), R.drawable.walk_banner_5, 5));
+
+
+                    break;
+            }
             sliderPagerAdapter = new PageAdapter(LandingPage.this, slider_image_list);
         }
         vp_slider.setAdapter(sliderPagerAdapter);
