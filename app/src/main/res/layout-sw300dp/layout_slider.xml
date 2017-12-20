@@ -8,31 +8,29 @@
     <TextView
         android:id="@+id/heading"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="50sp"
         android:fontFamily="@font/futura_tee_bold"
         android:gravity="center"
         android:text="FOLLOW"
 
         android:textAllCaps="true"
         android:textColor="@color/white"
-        android:textSize="17sp"
-        android:textStyle="bold" />
+        android:textSize="19sp"
+        android:textStyle="normal" />
 
     <ImageView
         android:id="@+id/im_slider"
-        android:layout_width="178dp"
-        android:layout_height="200dp"
+        android:layout_width="230sp"
+        android:layout_height="220sp"
         android:layout_below="@+id/heading"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:background="#00000000"
-        android:scaleType="fitCenter"
-
-        android:src="@drawable/walk_banner_1" />
+        android:background="@color/transparent"
+        android:scaleType="fitXY"
+        />
 
     <ImageView
         android:id="@+id/sepline"
-        android:layout_width="250dp"
+        android:layout_width="260dp"
         android:layout_height="1dp"
 
         android:layout_below="@+id/im_slider"
@@ -46,16 +44,14 @@
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="10sp"
-        android:layout_marginRight="10sp"
+        android:layout_alignParentBottom="true"
         android:layout_below="@+id/sepline"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="25sp"
-        android:gravity="center_horizontal|bottom"
+        android:layout_marginLeft="2sp"
+        android:layout_marginRight="2sp"
+        android:gravity="center"
         android:text="get notification from upcoming fields and get that today hello world"
         android:textColor="@color/white"
-        android:textSize="14sp" />
+        android:textSize="13sp" />
 
 </RelativeLayout>

@@ -27,12 +27,12 @@ import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.squareup.picasso.Picasso;
 import com.vgroupinc.assignment3.Network.CustomRequest;
 import com.vgroupinc.assignment3.Network.NetworkConfig;
 import com.vgroupinc.assignment3.Network.NetworkRequest;
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.appController.AppController;
+import com.vgroupinc.assignment3.appController.SharedPrefs;
 import com.vgroupinc.assignment3.base.BaseActivity;
 import com.vgroupinc.assignment3.dashboard.adapters.HypeAdapter;
 import com.vgroupinc.assignment3.dashboard.adapters.NotificationAdapter;
@@ -47,6 +47,7 @@ import com.vgroupinc.assignment3.dashboard.bean.notifications.Notifications;
 import com.vgroupinc.assignment3.dashboard.navbar.NavAdapter;
 import com.vgroupinc.assignment3.dashboard.navbar.NavBean;
 import com.vgroupinc.assignment3.login.LoginActivity;
+import com.vgroupinc.assignment3.picasso.PicassoImp;
 import com.vgroupinc.assignment3.utils.OnSwipeTouchListener;
 import com.vgroupinc.assignment3.utils.Utils;
 
@@ -54,14 +55,11 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class ProfileActivity extends BaseActivity {
     private final int NOTIF = 0, HYPE = 1, TOURNA = 2, PROFILE = 3;
-    Map<String, String> headers;
+    private Map<String, String> headers;
     private ProgressBar progressBar;
     private int pastVisiblesItems, visibleItemCount;
-    //private ArrayList<Tournament> tournaments=new ArrayList<>();
     private boolean canSwipeUp = true, canSwipeLeft = true, canSwipeRight = false, canSwipeDown = false;
     private boolean tournamentSelected = false, hypeSelected = false, notifSelected = false, loadMore = false;
     private Context context;
@@ -70,28 +68,22 @@ public class ProfileActivity extends BaseActivity {
     private ActiveTournaments tournaments;
     private Notifications notifications;
     private RelativeLayout profileLayout, listLayout;
-    private ImageView background_img, navBtn, profile_image, social_icon, dashLeft, dashRight;
+    private ImageView navBtn, profile_image, dashLeft, dashRight;
     private TextView playerName, email, social_id, notification, hype, tournament, messageFollowers, syncToServer, playerName_drawer, location_drawer;
     private ListView listView, listView_drawer;
     private NavBean navBean;
-    //    private String[] nav_items = new String[]{"Tournaments", "Events", "Seasons", "My Teams", "Following", "Settings", "Logout"};
     private HypeAdapter hypeAdapter;
     private NotificationAdapter notificationAdapter;
     private TournamentAdapter tournamentAdapter;
     private EditText messageEditText;
     private ApiData apiData = new ApiData();
     private int totalCount = 0;
-    private CircleImageView profile_image_drawer;
     private Typeface normal, bold;
     private DrawerLayout drawer;
-    private LinearLayout socialContainer, options, scrollIndicator;
+    private LinearLayout socialContainer, options, scrollIndicator,mainView;
     private RelativeLayout.LayoutParams fullParams = new RelativeLayout.LayoutParams(0, 0);
     private RelativeLayout.LayoutParams swipeParams = new RelativeLayout.LayoutParams(0, 0);
     private NavAdapter navAdapter;
-
-    private LinearLayout mainView;
-
-    private RelativeLayout drawerView;
     private ActionBarDrawerToggle mDrawerToggle;
 
     //Tab
@@ -99,10 +91,8 @@ public class ProfileActivity extends BaseActivity {
     private GridLayoutManager mLayoutManager;
     private RelativeLayout messageFollowersLayout;
     private RecyclerView.Adapter tab_tourna_adapter, tab_hype_adapter;
-    private int visibleThreshold = 5;
-    private int lastVisibleItem, totalItemCount;
-    private boolean loading = false;
-//    private LinearLayout.LayoutParams[] swipeParams= new LinearLayout.LayoutParams[2];
+    private int totalItemCount;
+
 
     public static boolean deleteDir(File dir) {
         if (dir != null && dir.isDirectory()) {
@@ -120,7 +110,6 @@ public class ProfileActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (isTab) {
             setContentView(R.layout.tab_drawer);
@@ -130,26 +119,61 @@ public class ProfileActivity extends BaseActivity {
         }
         context = this;
 
-        normal = Typeface.createFromAsset(getAssets(), "fonts/futura_tee.ttf");
-        bold = Typeface.createFromAsset(getAssets(), "fonts/futura_tee_bold.ttf");
         init();
-
-//        apiData.
-
         networkcallToApi(PROFILE, 0);
         networkcallToApi(TOURNA, 0);
         networkcallToApi(NOTIF, 0);
         networkcallToApi(HYPE, 0);
-
         initSwipe();
     }
 
     private void init() {
+        userProfile = new UserProfileBean();
+        hypeSearch = new HypeSearchBean();
+        tournaments = new ActiveTournaments();
+        notifications = new Notifications();
+        navBean = new NavBean();
+        headers = new HashMap<>();
+        headers.put(NetworkConfig.HEADER_API_VERSION, NetworkConfig.HEADER_API_VERSION_VALUE + AppController.getInstance().version);
+        headers.put(NetworkConfig.HEADER_AUTH, AppController.getInstance().loggedInUser.getKey());
+        normal = Typeface.createFromAsset(getAssets(), "fonts/futura_tee.ttf");
+        bold = Typeface.createFromAsset(getAssets(), "fonts/futura_tee_bold.ttf");
+
+        //bindings views to objects/variables
         mainView = findViewById(R.id.mainView);
-        drawerView = findViewById(R.id.menuView);
+        progressBar = findViewById(R.id.progress);
+        listView = findViewById(R.id.listView);
+        listView_drawer = findViewById(R.id.list_drawer);
+        syncToServer = findViewById(R.id.syncToServer);
+        playerName_drawer = findViewById(R.id.playerName_drawer);
+        location_drawer = findViewById(R.id.location_drawer);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        socialContainer = findViewById(R.id.socialContainer);
+        options = findViewById(R.id.options);
+        scrollIndicator = findViewById(R.id.scrollIndicator);
+        dashLeft = findViewById(R.id.dashLeft);
+        dashRight = findViewById(R.id.dashRight);
+        messageEditText = findViewById(R.id.messageEditText);
+        messageFollowers = findViewById(R.id.messageFollowers);
+        profileLayout = findViewById(R.id.profileLayout);
+        listLayout = findViewById(R.id.listLayout);
+        navBtn = findViewById(R.id.navBtn);
+        profile_image = findViewById(R.id.profile_image);
+        playerName = findViewById(R.id.playerName);
+        email = findViewById(R.id.email);
+        social_id = findViewById(R.id.social_id);
+        notification = findViewById(R.id.notification);
+        hype = findViewById(R.id.hype);
+        tournament = findViewById(R.id.tournament);
+        listView = findViewById(R.id.listView);
+        progressBar.setVisibility(View.GONE);
+        messageFollowers.setVisibility(View.GONE);
+        socialContainer.setVisibility(View.INVISIBLE);
+        messageEditText.setVisibility(View.GONE);
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         if (isTab) {
             mRecyclerView = mainView.findViewById(R.id.recyclerView);
-            mLayoutManager = new GridLayoutManager(context, 2, GridLayoutManager.HORIZONTAL, false);
+            mLayoutManager = new GridLayoutManager(context, getResources().getInteger(R.integer.spanCount), GridLayoutManager.HORIZONTAL, false);
             mRecyclerView.setLayoutManager(mLayoutManager);
             messageFollowersLayout = findViewById(R.id.messageFollowersLayout);
             messageFollowersLayout.setVisibility(View.GONE);
@@ -198,19 +222,6 @@ public class ProfileActivity extends BaseActivity {
                             networkcallToApi(HYPE, page);
                         }
                     }
-
-
-//                    GridLayoutManager layoutManager = (GridLayoutManager) mRecyclerView.getLayoutManager();
-                    totalItemCount = mLayoutManager.getItemCount();
-                    lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
-//                    if (!loading &&
-//                            totalItemCount <= (lastVisibleItem + visibleThreshold)) {
-////                        if (onLoadMoreListener != null) {
-////                            onLoadMoreListener.onLoadMore();
-////                        }
-//                        Toast.makeText(ProfileActivity.this, "LOAD MORE", Toast.LENGTH_SHORT).show();
-////                        loading = true;
-//                    }
                 }
             });
 
@@ -223,53 +234,6 @@ public class ProfileActivity extends BaseActivity {
             swipeParams.topMargin = fullParams.topMargin;
 
         }
-        progressBar = findViewById(R.id.progress);
-        progressBar.setVisibility(View.GONE);
-        listView = findViewById(R.id.listView);
-        listView_drawer = findViewById(R.id.list_drawer);
-        navBean = new NavBean();
-
-//        syncToServer,playerName_drawer,location_drawer;
-        syncToServer = findViewById(R.id.syncToServer);
-        playerName_drawer = findViewById(R.id.playerName_drawer);
-        location_drawer = findViewById(R.id.location_drawer);
-//        LocalAdapter adapter=new LocalAdapter(ProfileActivity.this,tournaments);
-//        listView.setAdapter(adapter);
-
-//        listView_drawer.setAdapter(itemsAdapter);
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-        socialContainer = findViewById(R.id.socialContainer);
-        socialContainer.setVisibility(View.INVISIBLE);
-        options = findViewById(R.id.options);
-        scrollIndicator = findViewById(R.id.scrollIndicator);
-        dashLeft = findViewById(R.id.dashLeft);
-        dashRight = findViewById(R.id.dashRight);
-        messageEditText = findViewById(R.id.messageEditText);
-        messageFollowers = findViewById(R.id.messageFollowers);
-        messageFollowers.setVisibility(View.GONE);
-        messageEditText.setVisibility(View.GONE);
-//        gestureFilter = new SimpleGestureFilter(this, this);
-        userProfile = new UserProfileBean();
-        hypeSearch = new HypeSearchBean();
-        tournaments = new ActiveTournaments();
-        notifications = new Notifications();
-        headers = new HashMap<>();
-        headers.put(NetworkConfig.HEADER_API_VERSION, NetworkConfig.HEADER_API_VERSION_VALUE + AppController.getInstance().version);
-        headers.put(NetworkConfig.HEADER_AUTH, AppController.getInstance().loggedInUser.getKey());
-        profileLayout = findViewById(R.id.profileLayout);
-        listLayout = findViewById(R.id.listLayout);
-//        background_img = findViewById(R.id.background_img);
-        navBtn = findViewById(R.id.navBtn);
-        profile_image = findViewById(R.id.profile_image);
-        social_icon = findViewById(R.id.social_icon);
-        playerName = findViewById(R.id.playerName);
-        email = findViewById(R.id.email);
-        social_id = findViewById(R.id.social_id);
-        notification = findViewById(R.id.notification);
-        hype = findViewById(R.id.hype);
-        tournament = findViewById(R.id.tournament);
-        listView = findViewById(R.id.listView);
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -278,7 +242,6 @@ public class ProfileActivity extends BaseActivity {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                Log.e("SCROLL", "visibleItemCount: " + visibleItemCount + "\t firstVisibleItem: " + firstVisibleItem + "\t totalItemCount: " + totalItemCount);
                 if (totalItemCount > totalCount) {
                     totalCount = totalItemCount;
                     loadMore = true;
@@ -311,8 +274,6 @@ public class ProfileActivity extends BaseActivity {
         tournament.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                networkcallToApi(TOURNA, 0);
                 totalCount = 0;
                 changeUI(tournament);
                 setData(TOURNA);
@@ -322,22 +283,17 @@ public class ProfileActivity extends BaseActivity {
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                networkcallToApi(NOTIF, 0);
                 totalCount = 0;
                 changeUI(notification);
                 setData(NOTIF);
-
             }
         });
         hype.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                networkcallToApi(HYPE, 0);
                 totalCount = 0;
                 changeUI(hype);
                 setData(HYPE);
-
-
             }
         });
         navBtn.setOnClickListener(new View.OnClickListener() {
@@ -357,7 +313,6 @@ public class ProfileActivity extends BaseActivity {
                 makeToast("sync To server");
             }
         });
-
         mDrawerToggle = new ActionBarDrawerToggle(this, drawer, null, R.string.app_name, R.string.app_name) {
             public void onDrawerClosed(View view) {
                 supportInvalidateOptionsMenu();
@@ -392,7 +347,8 @@ public class ProfileActivity extends BaseActivity {
                         break;
                     default:
                         makeToast(navBean.getNavItem(position - 2) + " clicked");
-                        if (navBean.getNavItem(position - 2).equals("Logout")) {
+                        if (navBean.getNavItem(position - 2).equals(getString(R.string.logout_123))) {
+                            SharedPrefs.clearData(context);
                             clearApplicationData();
                             startActivity(new Intent(context, LoginActivity.class));
                             finish();
@@ -403,6 +359,14 @@ public class ProfileActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            finishNoTransition();
+        }
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     private void initSwipe() {
@@ -410,6 +374,7 @@ public class ProfileActivity extends BaseActivity {
             @Override
             public void onSwipeRight() {
                 super.onSwipeRight();
+                Utils.hideKeyboard(profileLayout, context);
                 if (canSwipeRight) {
                     swipeRight();
                 }
@@ -463,7 +428,7 @@ public class ProfileActivity extends BaseActivity {
 
     private void swipeLeft() {
 
-        dashLeft.setImageResource(R.color.transparent);
+        dashLeft.setImageResource(R.color.grey);
         dashRight.setImageResource(R.color.cyan_400);
         profile_image.setVisibility(View.GONE);
         playerName.setVisibility(View.GONE);
@@ -488,7 +453,7 @@ public class ProfileActivity extends BaseActivity {
     private void swipeRight() {
         messageEditText.clearFocus();
         dashLeft.setImageResource(R.color.cyan_400);
-        dashRight.setImageResource(R.color.transparent);
+        dashRight.setImageResource(R.color.grey);
         profile_image.setVisibility(View.VISIBLE);
         playerName.setVisibility(View.VISIBLE);
         email.setVisibility(View.VISIBLE);
@@ -552,28 +517,27 @@ public class ProfileActivity extends BaseActivity {
                 notifSelected = false;
                 tournamentSelected = true;
                 tournament.setTextColor(getResources().getColor(R.color.white));
-                tournament.setTypeface(bold);
-                notification.setTypeface(normal);
-                hype.setTypeface(normal);
-
                 notification.setTextColor(getResources().getColor(R.color.grey));
                 hype.setTextColor(getResources().getColor(R.color.grey));
                 if (isTab) {
                     listView.setVisibility(View.GONE);
                     mRecyclerView.setVisibility(View.GONE);
+                    tournament.setTypeface(bold);
+                    notification.setTypeface(normal);
+                    hype.setTypeface(normal);
                 }
                 break;
             case R.id.notification:
                 tournamentSelected = false;
                 hypeSelected = false;
                 notifSelected = true;
-                tournament.setTypeface(normal);
-                notification.setTypeface(bold);
-                hype.setTypeface(normal);
                 tournament.setTextColor(getResources().getColor(R.color.grey));
                 notification.setTextColor(getResources().getColor(R.color.white));
                 hype.setTextColor(getResources().getColor(R.color.grey));
                 if (isTab) {
+                    tournament.setTypeface(normal);
+                    notification.setTypeface(bold);
+                    hype.setTypeface(normal);
                     mRecyclerView.setVisibility(View.GONE);
                 }
                 break;
@@ -581,15 +545,16 @@ public class ProfileActivity extends BaseActivity {
                 tournamentSelected = false;
                 notifSelected = false;
                 hypeSelected = true;
-                tournament.setTypeface(normal);
-                notification.setTypeface(normal);
-                hype.setTypeface(bold);
+
                 tournament.setTextColor(getResources().getColor(R.color.grey));
                 notification.setTextColor(getResources().getColor(R.color.grey));
                 hype.setTextColor(getResources().getColor(R.color.white));
                 if (isTab) {
                     listView.setVisibility(View.GONE);
                     mRecyclerView.setVisibility(View.GONE);
+                    tournament.setTypeface(normal);
+                    notification.setTypeface(normal);
+                    hype.setTypeface(bold);
                 }
                 break;
         }
@@ -597,7 +562,6 @@ public class ProfileActivity extends BaseActivity {
 
     private void networkcallToApi(int choice, final int page) {
         headers.put("pagenumber", String.valueOf(page));
-//        listView.setVisibility(View.INVISIBLE);
         Response.ErrorListener errorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -620,12 +584,10 @@ public class ProfileActivity extends BaseActivity {
 
                     break;
                 case NOTIF:
-//                    if (apiData.getNotifB().getLoadMore()) {
                     Response.Listener notification_listener = new Response.Listener() {
                         @Override
                         public void onResponse(Object response) {
                             notifications = (Notifications) response;
-//                            setData(NOTIF, notifications);
                             if (notifications.getList().size() > 0) {
                                 setApiData(NOTIF, notifications, page);
                             } else {
@@ -636,7 +598,7 @@ public class ProfileActivity extends BaseActivity {
                     };
                     CustomRequest notificationRequest = new CustomRequest(true, NetworkConfig.BASE_URL + NetworkConfig.NOTIFICATIONLIST, Notifications.class, headers, notification_listener, errorListener);
                     NetworkRequest.getInstance(context).addToRequestQueue(notificationRequest);
-//                    }
+
                     break;
 
                 case HYPE:
@@ -656,12 +618,10 @@ public class ProfileActivity extends BaseActivity {
                     NetworkRequest.getInstance(context).addToRequestQueue(hypeRequest);
                     break;
                 case TOURNA:
-//                    if (apiData.getTournaB().getLoadMore()) {
                     Response.Listener tournament_listener = new Response.Listener() {
                         @Override
                         public void onResponse(Object response) {
                             tournaments = (ActiveTournaments) response;
-//                            setData(TOURNA, tournaments);
                             if (tournaments.getList().size() > 0) {
                                 setApiData(TOURNA, tournaments, page);
                             } else {
@@ -672,7 +632,6 @@ public class ProfileActivity extends BaseActivity {
                     };
                     CustomRequest tournamentRequest = new CustomRequest(true, NetworkConfig.BASE_URL + NetworkConfig.GETACTIVETOURNAMENT + AppController.getInstance().loggedInUser.getUserID(), ActiveTournaments.class, headers, tournament_listener, errorListener);
                     NetworkRequest.getInstance(context).addToRequestQueue(tournamentRequest);
-//                    }
                     break;
             }
         } else {
@@ -680,12 +639,21 @@ public class ProfileActivity extends BaseActivity {
         }
     }
 
+    /**
+     *
+     * @param choice integer value denoting choice of request {@link TournamentAdapter}
+     * @param object
+     * @param page
+     */
     private void setApiData(int choice, Object object, int page) {
         switch (choice) {
             case PROFILE:
                 UserProfileBean bean = (UserProfileBean) object;
                 playerName.setText(bean.getPerson().getName());
-                Picasso.with(context).load(NetworkConfig.IMAGE_DOWNLOAD_URL + bean.getPerson().getImageKey()).placeholder(R.drawable.user_profile_icon).into(profile_image);
+                PicassoImp.getInstance().setImage(NetworkConfig.IMAGE_DOWNLOAD_URL + bean.getPerson().getImageKey(),
+                        (Activity) context,
+                        profile_image,
+                        R.drawable.user_profile_icon);
                 email.setText(bean.getEmail());
                 socialContainer.setVisibility(View.VISIBLE);
                 social_id.setText(bean.getTwitterUser().getTwitterHandle());
@@ -700,7 +668,6 @@ public class ProfileActivity extends BaseActivity {
                 Notifications notifications = (Notifications) object;
                 if (apiData.getNotifB().getFirst()) {
                     apiData.setNotifB(notifications);
-//                    apiData.getNotifB().setFirst(false);
                 } else {
                     apiData.addtoNotificationsList(notifications, page);
                     notificationAdapter.notifyDataSetChanged();
@@ -714,7 +681,6 @@ public class ProfileActivity extends BaseActivity {
                 } else {
                     apiData.addtoHypeList((HypeSearchBean) object, page);
                     if (isTab) {
-//                        tab_hype_adapter.notifyDataSetChanged();
                         tab_hype_adapter.notifyItemInserted(totalCount);
 
                     } else {
@@ -795,9 +761,9 @@ public class ProfileActivity extends BaseActivity {
                         apiData.getTournaB().setFirst(false);
                     } else {
                         hideProgress();
-//                        mRecyclerView.swapAdapter(tab_tourna_adapter,true);
+
                         mRecyclerView.setAdapter(tab_tourna_adapter);
-//                    tournamentAdapter.notifyDataSetChanged();
+
                     }
                     mRecyclerView.setVisibility(View.VISIBLE);
                 } else {
@@ -810,7 +776,7 @@ public class ProfileActivity extends BaseActivity {
                     } else {
                         hideProgress();
                         listView.setAdapter(tournamentAdapter);
-//                    tournamentAdapter.notifyDataSetChanged();
+
                     }
                     listView.setVisibility(View.VISIBLE);
                 }
@@ -825,16 +791,6 @@ public class ProfileActivity extends BaseActivity {
     private void hideProgress() {
         progressBar.setVisibility(View.GONE);
     }
-
-    //    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        try {
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
 
     public void clearApplicationData() {

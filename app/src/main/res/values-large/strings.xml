@@ -39,4 +39,7 @@
     <string name="notifications">Notifications</string>
     <string name="hype">Hype</string>
     <string name="tournaments">Tournaments</string>
+    <string name="logout_123">Logout</string>
+    <string name="internetError">NO Internet, Please Connect to proceed</string>
+    <integer name="spanCount">2</integer>
 </resources>

@@ -8,10 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-import com.vgroupinc.assignment3.Network.NetworkConfig;
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.dashboard.bean.Tournaments.ActiveTournaments;
+import com.vgroupinc.assignment3.picasso.PicassoImp;
 import com.vgroupinc.assignment3.utils.Utils;
 
 /**
@@ -20,15 +19,19 @@ import com.vgroupinc.assignment3.utils.Utils;
 
 public class TournamentAdapter extends BaseAdapter {
     ViewHolder holder;
+    int count = 0;
     private ActiveTournaments tournament;
     private LayoutInflater inflater;
     private Context activity;
+    //    private int[] color_array;
+    //    private int color;
+    private int color;
 
     public TournamentAdapter(ActiveTournaments tournament, Context context) {
         this.tournament = tournament;
         this.activity = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
+}
 
 
     @Override
@@ -57,16 +60,11 @@ public class TournamentAdapter extends BaseAdapter {
         holder.name.setText(tournament.getList().get(position).getName());
         String date = Utils.formatDate(tournament.getList().get(position).getStartDate());
         holder.date.setText(date);
-        if (tournament.getList().get(position).getImageKey() != null) {
-            Picasso.with(activity).load(NetworkConfig.IMAGE_DOWNLOAD_URL + tournament.getList().get(position).getImageKey()).placeholder(R.drawable.a02).into(holder.imageView);
-        } else {
-            Picasso.with(activity).load(R.drawable.a04).placeholder(R.drawable.a02).into(holder.imageView);
-        }
+        PicassoImp.getInstance().setImage(tournament.getList().get(position).getImageKey(), activity, position, holder.imageView);
         return convertView;
     }
 
-
-    private class ViewHolder {
+    private static class ViewHolder {
         ImageView imageView = null;
         TextView name = null, date = null;
     }

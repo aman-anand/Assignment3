@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_signup_bg">
@@ -16,8 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/login_head"
             android:gravity="center">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="25sp"
+                android:scaleType="fitXY"
+                android:src="@drawable/login_head" />
 
             <ImageView
                 android:id="@+id/image_logo"
@@ -25,19 +33,31 @@
                 android:layout_height="@dimen/logo_H_300"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/logo_margin_top_300"
+                android:scaleType="fitXY"
                 android:src="@drawable/registration_logo" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_above="@id/profile_image"
                 android:layout_below="@id/image_logo"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
+                android:gravity="center"
                 android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="@dimen/textSize_300_10sp"
                 tools:ignore="SmallSp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/CIV_300_H"
+                android:layout_height="@dimen/CIV_300_H"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/user_profile_icon"
+                app:civ_border_color="@color/grey"
+                app:civ_border_width="1dp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -69,6 +89,7 @@
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8sp"
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:maxLength="56"
@@ -95,11 +116,11 @@
                 android:orientation="horizontal"
                 android:weightSum="3">
 
-                <View
+                <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/OR_line_H_300"
                     android:layout_weight="0.9"
-                    android:foreground="@color/white" />
+                    android:src="@color/grey_600" />
 
 
                 <TextView
@@ -110,11 +131,11 @@
                     android:text="@string/or"
                     android:textColor="@color/white" />
 
-                <View
+                <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/OR_line_H_300"
                     android:layout_weight="0.9"
-                    android:foreground="@color/white" />
+                    android:src="@color/grey_600" />
             </LinearLayout>
 
             <LinearLayout
@@ -128,19 +149,19 @@
                 android:weightSum="3">
 
                 <ImageView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:src="@drawable/fb1" />
 
                 <ImageView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:src="@drawable/gpl" />
 
                 <ImageView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
 
@@ -149,7 +170,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="75sp"
                 android:layout_alignParentBottom="true"
                 android:orientation="vertical">
 
@@ -164,7 +185,7 @@
                 <TextView
                     android:id="@+id/loginBtn"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/login_Btn_H_300"
+                    android:layout_height="match_parent"
                     android:layout_below="@+id/headerImage"
                     android:background="@drawable/sign_login_button"
                     android:gravity="center"
@@ -192,7 +213,7 @@
             android:layout_below="@+id/header2"
             android:layout_marginTop="@dimen/marginTop_300_bg"
             android:scaleType="centerCrop"
-            android:src="@drawable/login_signup_bg" />
+            android:src="@drawable/login_pannel_bg" />
 
         <ImageView
             android:id="@+id/header2"
@@ -295,23 +316,12 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="@dimen/CIV_300_H"
-        android:layout_height="@dimen/CIV_300_H"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/CIV_300_marginTop"
-        android:src="@drawable/user_profile_icon"
-        app:civ_border_color="@color/grey"
-        app:civ_border_width="1dp" />
-
 
     <ProgressBar
         android:id="@+id/googleProgressBar"
-        android:layout_width="@dimen/CIV_300_H"
-        android:layout_height="@dimen/CIV_300_H"
+        android:layout_width="35sp"
+        android:layout_height="35sp"
         android:layout_gravity="center"
-        android:indeterminate="true"
-
-        />
+        android:indeterminate="true" />
 
 </FrameLayout>

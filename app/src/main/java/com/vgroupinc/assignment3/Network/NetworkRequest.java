@@ -46,21 +46,6 @@ public class NetworkRequest {
 
         mRequestQueue = getRequestQueue();
 
-//        mImageLoader = new ImageLoader(mRequestQueue,
-//                new ImageLoader.ImageCache() {
-//                    private final LruCache<String, Bitmap>
-//                            cache = new LruCache<String, Bitmap>(20);
-//
-//                    @Override
-//                    public Bitmap getBitmap(String url) {
-//                        return cache.get(url);
-//                    }
-//
-//                    @Override
-//                    public void putBitmap(String url, Bitmap bitmap) {
-//                        cache.put(url, bitmap);
-//                    }
-//                });
     }
 
     public static synchronized NetworkRequest getInstance(Context context) {
@@ -73,8 +58,6 @@ public class NetworkRequest {
 
     public RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
-            // getApplicationContext() is key, it keeps you from leaking the
-            // Activity or BroadcastReceiver if someone passes one in.
             mRequestQueue = Volley.newRequestQueue(mCtx.getApplicationContext());
         }
         return mRequestQueue;
@@ -83,11 +66,6 @@ public class NetworkRequest {
     public <T> void addToRequestQueue(Request<T> req) {
         getRequestQueue().add(req);
     }
-
-//    public ImageLoader getImageLoader() {
-//        return mImageLoader;
-//    }
-
 
     public void login(final String username, final String pass) throws JSONException {
         shareLoginStatus = (ShareLoginStatus) mCtx;
@@ -103,7 +81,6 @@ public class NetworkRequest {
                         parseResponse(response);
 
                         shareLoginStatus.onLoginSuccess(gson.fromJson(response.toString(), LoggedInUser.class), new User(username, pass, true));
-//                        Log.e(TAG, "onResponse: " + response.toString());
                     }
                 }, new Response.ErrorListener() {
 
@@ -116,9 +93,9 @@ public class NetworkRequest {
                             String errorMessage = new String(response.data);
 
                             try {
-                                JSONObject jsonObject=new JSONObject(str);
-                                JSONArray jsonArray=jsonObject.getJSONArray("errorMessages");
-                                errorMessage= (String) jsonArray.get(0);
+                                JSONObject jsonObject = new JSONObject(str);
+                                JSONArray jsonArray = jsonObject.getJSONArray("errorMessages");
+                                errorMessage = (String) jsonArray.get(0);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

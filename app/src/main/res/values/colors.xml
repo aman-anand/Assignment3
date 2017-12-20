@@ -20,6 +20,20 @@
     <color name="j">#1D4657</color>
     <color name="k">#5D6C73</color>
     <color name="l">#A28F6E</color>
+    <array name="arr_color">
+        <item>@color/a</item>
+        <item>@color/b</item>
+        <item>@color/c</item>
+        <item>@color/d</item>
+        <item>@color/e</item>
+        <item>@color/f</item>
+        <item>@color/g</item>
+        <item>@color/h</item>
+        <item>@color/i</item>
+        <item>@color/j</item>
+        <item>@color/k</item>
+        <item>@color/l</item>
+    </array>
 
     <color name="red_50">#FFEBEE</color>
     <color name="red_100">#FFCDD2</color>
@@ -313,4 +327,5 @@
     <color name="dark_bg_light_secondary_text">#B3FFFFFF</color>
     <color name="dark_bg_light_disabled_text">#80FFFFFF</color>
     <color name="dark_bg_light_hint_text">#80FFFFFF</color>
+    <color name="transparent_40">#40000000</color>
 </resources>

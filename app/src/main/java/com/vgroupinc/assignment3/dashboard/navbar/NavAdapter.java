@@ -17,17 +17,18 @@ import com.vgroupinc.assignment3.R;
  */
 
 public class NavAdapter extends BaseAdapter {
+    int count = 0;
     private NavBean mNavBean;
     private Activity activity;
     private LayoutInflater inflater;
     private ProfileImage profileImage;
     private UserInfo userInfo;
     private Menu menu;
-    int count=0;
+
     public NavAdapter(NavBean mNavBean, Activity activity) {
         this.mNavBean = mNavBean;
         this.activity = activity;
-        this.inflater= (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -48,47 +49,49 @@ public class NavAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        switch (position){
+        switch (position) {
             case 0:
-                View v;
-                v=inflater.inflate(R.layout.nav_image,null);
-                if (profileImage==null){
-                    profileImage=new ProfileImage();
+                View user_image;
+                user_image = inflater.inflate(R.layout.nav_image, null);
+                if (profileImage == null) {
+                    profileImage = new ProfileImage();
                 }
-                profileImage.imageView=v.findViewById(R.id.profile_image_drawer);
+                profileImage.imageView = user_image.findViewById(R.id.profile_image_drawer);
                 Picasso.with(activity).load(mNavBean.getImageKey()).placeholder(R.drawable.user_profile_icon).into(profileImage.imageView);
-                return v;
+                return user_image;
             case 1:
-                View v1;
-                v1=inflater.inflate(R.layout.nav_player_info,null);
-                if (userInfo==null){
-                    userInfo= new UserInfo();
+                View player_info;
+                player_info = inflater.inflate(R.layout.nav_player_info, null);
+                if (userInfo == null) {
+                    userInfo = new UserInfo();
                 }
-                userInfo.name=v1.findViewById(R.id.playerName_drawer);
-                userInfo.user_name=v1.findViewById(R.id.location_drawer);
+                userInfo.name = player_info.findViewById(R.id.playerName_drawer);
+                userInfo.user_name = player_info.findViewById(R.id.location_drawer);
                 userInfo.name.setText(mNavBean.getName());
-                userInfo.user_name.setText("\u0040"+mNavBean.getUserName());
-                return v1;
+                userInfo.user_name.setText("\u0040" + mNavBean.getUserName());
+                return player_info;
             default:
-                View v2;
-                v2=inflater.inflate(R.layout.nav_menu_item,null);
-                if (menu==null){
-                    menu=new Menu();
+                View menu_view;
+                menu_view = inflater.inflate(R.layout.nav_menu_item, null);
+                if (menu == null) {
+                    menu = new Menu();
                 }
-                menu.menuItem=v2.findViewById(R.id.menuItem);
-                menu.menuItem.setText(mNavBean.getNavItem(position-2));
+                menu.menuItem = menu_view.findViewById(R.id.menuItem);
+                menu.menuItem.setText(mNavBean.getNavItem(position - 2));
                 count++;
-                return v2;
+                return menu_view;
         }
     }
 
-    class ProfileImage{
-        ImageView imageView=null;
+    class ProfileImage {
+        ImageView imageView = null;
     }
-    class UserInfo{
-        TextView name=null,user_name=null;
+
+    class UserInfo {
+        TextView name = null, user_name = null;
     }
-    class Menu{
-        TextView menuItem=null;
+
+    class Menu {
+        TextView menuItem = null;
     }
 }

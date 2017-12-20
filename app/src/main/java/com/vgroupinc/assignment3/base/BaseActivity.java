@@ -25,7 +25,8 @@ import org.json.JSONObject;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected boolean isTab=false;
+    protected boolean isTab = false;
+
     @Override
     public void finish() {
         super.finish();
@@ -40,10 +41,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onLeaveThisActivity() {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
-
-    // It's cleaner to animate the start of new activities the same way.
-    // Override startActivity(), and call *overridePendingTransition*
-    // right after the super, so every single activity transaction will be animated:
 
     @Override
     public void startActivity(Intent intent) {
@@ -75,10 +72,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getResources().getBoolean(R.bool.isTablet)) {
-            isTab=true;
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            isTab = true;
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         } else {
-            isTab=false;
+            isTab = false;
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
     }
@@ -86,22 +83,21 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void makeToast(String message) {
 //        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-    public void handleError(VolleyError error, Context context){
+
+    public void handleError(VolleyError error, Context context) {
         NetworkResponse response = error.networkResponse;
         if (response != null) {
             String str = new String(response.data);
             String errorMessage = new String(response.data);
 
             try {
-                JSONObject jsonObject=new JSONObject(str);
-                JSONArray jsonArray=jsonObject.getJSONArray("errorMessages");
-                errorMessage= (String) jsonArray.get(0);
+                JSONObject jsonObject = new JSONObject(str);
+                JSONArray jsonArray = jsonObject.getJSONArray("errorMessages");
+                errorMessage = (String) jsonArray.get(0);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-//            shareLoginStatus.onLoginFail(errorMessage);
-            showAlert((Activity) context,errorMessage,1);
+            showAlert((Activity) context, errorMessage, 1);
             Log.e("error", str);
         }
     }

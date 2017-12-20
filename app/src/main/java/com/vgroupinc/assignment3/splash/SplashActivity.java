@@ -5,9 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Toast;
 
-import com.vgroupinc.assignment3.Network.NetworkCall;
+import com.vgroupinc.assignment3.Network.NetworkRequest;
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.appController.AppController;
 import com.vgroupinc.assignment3.appController.SharedPrefs;
@@ -26,34 +25,25 @@ public class SplashActivity extends BaseActivity implements ShareLoginStatus {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getResources().getBoolean(R.bool.isTablet)) {
-//            setContentView(R.layout.tab_landing_page);
+        if (isTab) {
+            setContentView(R.layout.splash);
         } else {
             setContentView(R.layout.splash);
         }
-
-
         context = this;
-
-
         User user = SharedPrefs.getUserData(SplashActivity.this);
         if (user.isLoginStatus()) {
             try {
-
-                NetworkCall.login(SplashActivity.this, user);
-
-
+                NetworkRequest.getInstance(context).login(user.getUsername(), user.getPassword());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         } else {
             final Handler handler = new Handler();
-            final Intent intent = new Intent(SplashActivity.this, LandingPage.class);
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    //Do something after 100ms
-
+                    Intent intent = new Intent(SplashActivity.this, LandingPage.class);
                     startActivity(intent);
                     finish();
 
@@ -77,16 +67,15 @@ public class SplashActivity extends BaseActivity implements ShareLoginStatus {
     public void onLoginSuccess(LoggedInUser loggedInUser, User userData) {
         SharedPrefs.setUserData(context, userData.getUsername(), userData.getPassword(), userData.isLoginStatus());
         AppController.getInstance().setLoggedInUser(loggedInUser);
-
-        Toast.makeText(context, "LOGIN SUCCESS from Splash ", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(context, ProfileActivity.class));
-        finish();
+        Intent intent = new Intent(SplashActivity.this, ProfileActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     @Override
     public void onLoginFail(String status) {
-        showAlert((Activity) context,status,1);
+        showAlert((Activity) context, status, 1);
         startActivity(new Intent(context, LandingPage.class));
-        finish();
+        this.finish();
     }
 }

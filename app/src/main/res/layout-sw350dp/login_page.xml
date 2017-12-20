@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@drawable/login_signup_bg">
 
     <LinearLayout
@@ -14,24 +16,43 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/login_head">
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="35sp"
+                android:scaleType="fitXY"
+                android:src="@drawable/login_head" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/CIV_350_H"
+                android:layout_height="@dimen/CIV_350_H"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/user_profile_icon"
+                app:civ_border_color="@color/grey"
+                app:civ_border_width="1dp" />
 
             <ImageView
                 android:id="@+id/image_logo"
                 android:layout_width="@dimen/logo_W_350"
                 android:layout_height="@dimen/logo_H_350"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20sp"
+                android:scaleType="fitXY"
                 android:src="@drawable/registration_logo" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_above="@+id/profile_image"
                 android:layout_below="@id/image_logo"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
+                android:gravity="center"
                 android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="@dimen/TS_login_350" />
@@ -66,6 +87,7 @@
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:maxLength="56"
@@ -98,7 +120,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/OR_line_H_350"
                     android:layout_weight="0.9"
-                    android:foreground="@color/white" />
+                    android:foreground="@color/grey_600" />
 
 
                 <TextView
@@ -113,7 +135,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/OR_line_H_350"
                     android:layout_weight="0.9"
-                    android:foreground="@color/white" />
+                    android:foreground="@color/grey_600" />
             </LinearLayout>
 
             <LinearLayout
@@ -148,17 +170,15 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="75sp"
                 android:layout_alignParentBottom="true"
-                android:layout_below="@+id/social"
-                android:layout_marginTop="20dp"
+
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/headerImage"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/slider_H_350"
-
                     android:scaleType="fitXY"
                     android:src="@drawable/login_line_new" />
 
@@ -170,7 +190,8 @@
                     android:background="@drawable/sign_login_button"
                     android:gravity="center"
                     android:text="@string/login"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
             </RelativeLayout>
 
 
@@ -182,7 +203,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/slideMenu_H_350"
         android:layout_gravity="bottom"
-
         android:visibility="invisible">
 
         <ImageView
@@ -191,10 +211,9 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_below="@+id/header2"
             android:layout_marginTop="@dimen/marginTop_350_bg"
             android:scaleType="centerCrop"
-            android:src="@drawable/login_signup_bg" />
+            android:src="@drawable/login_pannel_bg" />
 
         <ImageView
             android:id="@+id/header2"
@@ -202,6 +221,7 @@
             android:layout_height="@dimen/slider_Down_H_350"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:background="@color/transparent"
             android:scaleType="fitXY"
             android:src="@drawable/login_bg_line" />
 
@@ -296,20 +316,11 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="@dimen/CIV_350_H"
-        android:layout_height="@dimen/CIV_350_H"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/CIV_350_marginTop"
-        android:src="@drawable/user_profile_icon"
-        app:civ_border_color="@color/grey"
-        app:civ_border_width="1dp" />
-
 
     <ProgressBar
         android:id="@+id/googleProgressBar"
-        android:layout_width="@dimen/CIV_350_H"
-        android:layout_height="@dimen/CIV_350_H"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
         android:layout_gravity="center"
         android:indeterminate="true" />
 

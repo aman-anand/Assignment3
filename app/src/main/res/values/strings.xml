@@ -17,15 +17,15 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="des_1">Follow your friends, To\'s or favorite players to see when they \n are playing next and track their \n tournament progress and placements</string>
-    <string name="des_2">Create, edit and view seasons, events, teams &amp; tournaments of any \n kind on any platform online or offline</string>
+    <string name="des_2">Create, edit and view seasons, events, teams &amp; tournaments of \n any kind on any platform online or offline</string>
     <string name="des_3">Get notification on upcoming events or even in tournament \n notification right before a match starts \n on your phone, tablet, or Android Wear device.</string>
-    <string name="des_4">Preregister yourself, a team or a specific member of a team for any \n tournament.</string>
+    <string name="des_4">Preregister yourself, a team or a specific member of a \n team for any  tournament.</string>
     <string name="des_5">Automatic bracket making based on Seeding, Teams and locations.</string>
     <string name="title_1">follow</string>
     <string name="title_2">online and offline</string>
     <string name="title_3">notifications</string>
     <string name="title_4">pre-register</string>
-    <string name="title_5">pools &amp; brackets</string>
+    <string name="title_5"> pools&amp;brackets</string>
     <string name="use_as_a_guest">USE AS A GUEST</string>
     <string name="sign_up">SIGN UP</string>
     <string name="login">LOGIN</string>
@@ -51,4 +51,6 @@
     <string name="message_followers">Message followers</string>
     <string name="notification_message"> Notification Message</string>
     <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="logout_123">Logout</string>
+    <string name="internetError">NO Internet, Please Connect to proceed</string>
 </resources>

@@ -35,10 +35,8 @@ public class PageAdapter extends PagerAdapter {
         View view;
         if (activity.getResources().getBoolean(R.bool.isTablet)) {
             view = layoutInflater.inflate(R.layout.tab_layout_slider, container, false);
-
         } else {
             view = layoutInflater.inflate(R.layout.layout_slider, container, false);
-
         }
         if (holder == null) {
             holder = new ViewHolder();
@@ -46,14 +44,10 @@ public class PageAdapter extends PagerAdapter {
         holder.imageView = (ImageView) view.findViewById(R.id.im_slider);
         holder.title = view.findViewById(R.id.heading);
         holder.des = view.findViewById(R.id.description);
-//        Picasso.with(activity.getApplicationContext())
-//                .load(image_arraylist.get(position))
-//                .placeholder(R.mipmap.ic_launcher) // optional
-//                .error(R.mipmap.ic_launcher)         // optional
-//                .into(im_slider);
+        holder.title.setText(image_arraylist.get(position).getTitle());
         holder.imageView.setImageResource(image_arraylist.get(position).getImage());
-        holder.title.setText("" + image_arraylist.get(position).getTitle());
         holder.des.setText("" + image_arraylist.get(position).getDes());
+
 
         container.addView(view);
 

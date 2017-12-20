@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@drawable/login_signup_bg">
 
     <LinearLayout
@@ -21,34 +23,36 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="40sp"
                 android:scaleType="fitXY"
                 android:src="@drawable/login_head" />
 
             <ImageView
                 android:id="@+id/image_logo"
-                android:layout_width="120dp"
-                android:layout_height="80dp"
+                android:layout_width="140sp"
+                android:layout_height="70sp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="30sp"
+                android:scaleType="fitXY"
                 android:src="@drawable/registration_logo" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_above="@id/profile_image"
                 android:layout_below="@id/image_logo"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
+                android:gravity="center"
                 android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:id="@+id/profile_image"
+                android:layout_width="90sp"
+                android:layout_height="90sp"
                 android:layout_alignParentBottom="true"
-                android:layout_below="@+id/textView"
                 android:layout_centerHorizontal="true"
 
                 android:src="@drawable/user_profile_icon"
@@ -78,20 +82,21 @@
                     android:singleLine="true"
                     android:textColor="@color/white"
                     android:textColorHint="@color/grey"
-                    android:textSize="17sp"
+                    android:textSize="18sp"
                     app:backgroundTint="@color/grey" />
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8sp"
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:maxLength="56"
                     android:singleLine="true"
                     android:textColor="@color/white"
                     android:textColorHint="@color/grey"
-                    android:textSize="17sp"
+                    android:textSize="18sp"
                     app:backgroundTint="@color/grey" />
 
             </LinearLayout>
@@ -136,36 +141,39 @@
 
             <LinearLayout
                 android:id="@+id/social"
-                android:layout_width="600dp"
-                android:layout_height="40dp"
+                android:layout_width="600sp"
+                android:layout_height="0sp"
+                android:layout_above="@id/loginLay"
+                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="45dp"
-
+                android:layout_marginTop="5sp"
+                android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="50sp"
 
                     android:layout_weight="1"
                     android:src="@drawable/fb1" />
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="50sp"
                     android:layout_weight="1"
                     android:src="@drawable/gpl" />
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="50sp"
                     android:layout_weight="1"
 
                     android:src="@drawable/twitch" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/loginLay"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_alignParentBottom="true"
@@ -186,7 +194,8 @@
                     android:background="@drawable/sign_login_button"
                     android:gravity="center"
                     android:text="@string/login"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="25sp" />
 
 
             </LinearLayout>
@@ -200,15 +209,14 @@
         android:layout_width="match_parent"
         android:layout_height="270dp"
         android:layout_gravity="bottom"
-        android:visibility="invisible">
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/header2"
             android:layout_width="match_parent"
 
-            android:layout_height="70dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_height="60sp"
+            android:layout_alignParentTop="true"
             android:scaleType="fitXY"
             android:src="@drawable/tb_login_bg_line" />
 
@@ -219,7 +227,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/header2"
             android:scaleType="centerCrop"
-            android:src="@drawable/login_signup_bg" />
+            android:src="@drawable/tb_login_pannel_bg" />
 
 
         <TextView
@@ -237,8 +245,10 @@
             android:id="@+id/text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@id/text3"
             android:layout_below="@+id/text1"
             android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:text="@string/signup"
             android:textColor="@color/white"
             android:textSize="19sp" />
@@ -247,9 +257,9 @@
             android:id="@+id/text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text2"
+            android:layout_above="@id/text4"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="6dp"
+
             android:text="@string/use_as_a_guest"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -258,9 +268,9 @@
             android:id="@+id/text4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text3"
+            android:layout_above="@+id/sep_line"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="12sp"
 
             android:text="@string/forgot_password"
             android:textColor="@color/white"
@@ -270,18 +280,17 @@
             android:id="@+id/sep_line"
             android:layout_width="400dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text4"
+            android:layout_above="@+id/bottombar"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="9dp"
+            android:layout_marginTop="12sp"
             android:scaleType="fitXY"
             android:src="@drawable/sepline_new" />
 
         <LinearLayout
+            android:id="@+id/bottombar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="60sp"
             android:layout_alignParentBottom="true"
-
-            android:layout_below="@+id/sep_line"
             android:orientation="horizontal"
             android:weightSum="3">
 

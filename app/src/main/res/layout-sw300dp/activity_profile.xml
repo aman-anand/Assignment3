@@ -12,27 +12,37 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.85"
-        android:background="@drawable/login_signup_bg"
-       >
+        android:background="@drawable/login_signup_bg">
 
-
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/messageEditText"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/messageFoll_ET_h_300"
-            android:layout_alignBottom="@id/socialContainer"
+            android:layout_height="110sp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/nm_bg"
-            android:foreground="@drawable/nm_bg"
-            android:gravity="start"
-            android:hint="@string/notification_message"
-            android:padding="@dimen/message_F_padding_7dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/grey"
-            app:backgroundTint="@color/transparent" />
+            android:layout_marginRight="15dp">
+
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:id="@+id/nmbg"-->
+                <!--android:src="@drawable/nm_bg" />-->
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/messageEditText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/messageFoll_ET_h_300"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/nm_bg"
+                android:gravity="start"
+                android:hint="@string/notification_message"
+                android:padding="@dimen/message_F_padding_7dp"
+                android:visibility="visible"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                app:backgroundTint="@color/transparent" />
+        </RelativeLayout>
 
         <!--<ImageView-->
         <!--android:id="@+id/background_img"-->
@@ -60,67 +70,75 @@
             android:layout_height="@dimen/circle_image_view_height_300"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/civ_Margin_T"
-            android:src="@drawable/a11"
+            android:src="@drawable/user_profile_icon"
 
             android:visibility="visible"
             app:civ_border_color="@color/grey"
             app:civ_border_width="2dp" />
 
-        <TextView
-            android:id="@+id/playerName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/profile_image"
-            android:layout_marginTop="8sp"
-            android:gravity="center"
-            android:text="LIONEL MESSI"
-            android:textAllCaps="true"
-            android:textColor="@color/dark_bg_light_primary_text"
-            android:textSize="@dimen/textSize_PlayerName_300" />
-
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/playerName"
-            android:layout_marginTop="8sp"
-            android:gravity="center"
-            android:text="Argentina"
-            android:layout_above="@id/socialContainer"
-
-            android:textColor="@color/dark_bg_light_primary_text"
-            android:textSize="@dimen/textSize_country_300"
-            android:visibility="visible" />
-
         <LinearLayout
-            android:id="@+id/socialContainer"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
+            android:layout_below="@+id/profile_image"
+            android:layout_marginBottom="5sp"
             android:layout_marginTop="10sp"
-            android:orientation="horizontal"
-            android:visibility="visible">
-
-            <ImageView
-                android:id="@+id/social_icon"
-                android:layout_width="25sp"
-                android:layout_height="25sp"
-                android:layout_gravity="end|right"
-                android:layout_marginEnd="5sp"
-                android:layout_marginRight="5sp"
-                android:src="@drawable/twitter_icon" />
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/social_id"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
-                android:gravity="start"
-                android:text=""
+                android:id="@+id/playerName"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textAllCaps="true"
                 android:textColor="@color/dark_bg_light_primary_text"
-                android:textSize="@dimen/textSize_country_300" />
+                android:textSize="@dimen/textSize_PlayerName_300" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="5sp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/dark_bg_light_primary_text"
+                android:textSize="@dimen/textSize_country_300"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/socialContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="3sp"
+                android:layout_marginTop="5sp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/social_icon"
+                    android:layout_width="25sp"
+                    android:layout_height="25sp"
+                    android:layout_gravity="end|right"
+                    android:layout_marginEnd="5sp"
+                    android:layout_marginRight="5sp"
+                    android:src="@drawable/twitter_icon" />
+
+                <TextView
+                    android:id="@+id/social_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:gravity="start"
+                    android:text=""
+                    android:textColor="@color/dark_bg_light_primary_text"
+                    android:textSize="@dimen/textSize_country_300" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -139,6 +157,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.15"
+        android:background="@drawable/login_head"
 
         android:orientation="vertical">
 
@@ -154,7 +173,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@color/blue" />
+                android:src="@color/cyan_400" />
 
             <ImageView
                 android:id="@+id/dashRight"
@@ -222,7 +241,8 @@
             android:layout_marginRight="10dp"
             android:divider="@color/grey"
             android:dividerHeight="0.5dp"
-            android:fadeScrollbars="true" />
+            android:fadeScrollbars="true"
+            android:scrollbars="none" />
 
         <TextView
             android:id="@+id/messageFollowers"

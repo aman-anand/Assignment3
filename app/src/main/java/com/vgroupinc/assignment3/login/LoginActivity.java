@@ -5,14 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.vgroupinc.assignment3.Network.NetworkCall;
+import com.vgroupinc.assignment3.Network.NetworkRequest;
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.appController.AppController;
 import com.vgroupinc.assignment3.appController.SharedPrefs;
@@ -35,6 +36,7 @@ public class LoginActivity extends Manager implements ShareLoginStatus {
     private Context context;
     private ProgressBar progressBar;
     private RelativeLayout inflated_options, alter_screen;
+    private FrameLayout rootLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class LoginActivity extends Manager implements ShareLoginStatus {
     }
 
     private void init() {
+        rootLayout = findViewById(R.id.rootLayout);
         progressBar = findViewById(R.id.googleProgressBar);
         progressBar.setVisibility(View.INVISIBLE);
         email = findViewById(R.id.email_id);
@@ -63,14 +66,12 @@ public class LoginActivity extends Manager implements ShareLoginStatus {
         header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                inflated_options.setVisibility(View.VISIBLE);
                 toggleView(context, inflated_options, alter_screen);
             }
         });
         header2_inflated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                inflated_options.setVisibility(View.GONE);
                 toggleView(context, inflated_options, alter_screen);
             }
         });
@@ -82,59 +83,34 @@ public class LoginActivity extends Manager implements ShareLoginStatus {
                     if (verifydata(user)) {
                         try {
                             progressBar.setVisibility(View.VISIBLE);
-//                            NetworkRequest.getInstance(context).login(email.getText().toString().trim(), password.getText().toString().trim());
-                            NetworkCall.login(context, user);
-
+                            NetworkRequest.getInstance(context).login(user.getUsername(), user.getPassword());
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 } else {
-                    showAlert((Activity) context, "NO Internet, Please Connect to proceed", 3);
+                    showAlert((Activity) context, getString(R.string.internetError), 3);
+                }
+            }
+        });
+        rootLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int id = v.getId();
+                if (id == R.id.email_id || id == R.id.password || id == R.id.social ||
+                        id == R.id.headerImage || id == R.id.loginBtn ||
+                        id == R.id.inflated_options) {
+                    return false;
+                } else {
+                    Utils.hideKeyboard(v, context);
+                    return true;
                 }
             }
         });
 
-//                    User user = new User(email.getText().toString().trim(), password.getText().toString().trim());
-//                    HashMap<String, String> headers = new HashMap<String, String>();
-//                    headers.put("api-version", "TE_Android_" + AppController.getInstance().version);
-////                    headers.put("Content-Type", "application/json");
-////                    headers.put("Accept", "application/json");
-//                    headers.put("androidDeviceID", "");
-//                    Response.Listener listener= new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            Log.i("VOLLEY", response);
-//                        }
-//                    };
-//                    Response.ErrorListener errorListener=new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            Log.e("VOLLEY", error.toString());
-//                            NetworkResponse response = error.networkResponse;
-//                            if (response != null) {
-//                                String str = new String(response.data);
-//
-//                                Log.e("error", str);
-//                            }
-//                        }
-//                    };
-//                    CustomRequest request = new CustomRequest(NetworkConfig.LOGIN_URL,
-//                            user,
-//                            LoggedInUser.class,
-//                            headers,
-//                            listener,
-//                            errorListener);
-//                    NetworkRequest.getInstance(context).addToRequestQueue(request);
-//                }
-//            }
-//        });
-        email.setText("bhopal1");
-        password.setText("123456");
-
-
     }
+
 
     private boolean verifydata(User user) {
         boolean b = false;
@@ -155,16 +131,15 @@ public class LoginActivity extends Manager implements ShareLoginStatus {
         SharedPrefs.setUserData(context, userData.getUsername(), userData.getPassword(), userData.isLoginStatus());
         AppController.getInstance().setLoggedInUser(loggedInUser);
         progressBar.setVisibility(View.INVISIBLE);
-        startActivity(new Intent(context, ProfileActivity.class));
-        finish();
-        Toast.makeText(context, "LOGIN SUCCESS:: LOgin Activity", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     @Override
     public void onLoginFail(String error) {
-
-        showAlert((Activity) context,error,1);
         progressBar.setVisibility(View.INVISIBLE);
+        showAlert((Activity) context, error, 1);
 
     }
 }

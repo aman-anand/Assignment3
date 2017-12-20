@@ -24,13 +24,15 @@ public class NavBean {
     public ArrayList<String> getNav_items() {
         return nav_items;
     }
-    public String getNavItem(int position){
-        String str="";
-        if (position>=0&&position<nav_items.size()){
-            str=nav_items.get(position);
+
+    public String getNavItem(int position) {
+        String str = "";
+        if (position >= 0 && position < nav_items.size()) {
+            str = nav_items.get(position);
         }
         return str;
     }
+
     public String getUserName() {
         return userName;
     }

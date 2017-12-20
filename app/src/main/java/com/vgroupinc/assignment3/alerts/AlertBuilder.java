@@ -34,7 +34,8 @@ public class AlertBuilder {
      */
     public void getDialog(final Activity context, String message, int title) {
         context.setProgressBarVisibility(false);
-        AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.Theme_AppCompat_DayNight_Dialog);
+        AlertDialog alertDialog;
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.Theme_AppCompat_DayNight_Dialog);
         switch (title) {
             case 0:
                 builder.setTitle(context.getString(R.string.alert_success));
@@ -53,11 +54,12 @@ public class AlertBuilder {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
-                //Toast.makeText(context, context.getString(R.string.alert_toast), Toast.LENGTH_SHORT).show();
             }
         });
+        alertDialog = builder.create();
+        alertDialog.show();
 
-        builder.show();
+
     }
 
     /**

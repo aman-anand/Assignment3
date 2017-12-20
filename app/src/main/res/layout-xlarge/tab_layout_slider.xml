@@ -10,22 +10,18 @@
         android:id="@+id/im_slider"
         android:layout_width="700dp"
         android:layout_height="400dp"
-
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:background="@color/transparent"
         android:scaleType="fitXY"
-
-        android:src="@drawable/tab_banner_1" />
+        />
 
     <ImageView
         android:id="@+id/sepline"
         android:layout_width="740dp"
         android:layout_height="2dp"
-
         android:layout_below="@+id/im_slider"
         android:layout_centerHorizontal="true"
-
         android:layout_gravity="center"
         android:scaleType="fitXY"
         android:src="@color/grey" />

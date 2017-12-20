@@ -9,10 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.vgroupinc.assignment3.Network.NetworkConfig;
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.dashboard.bean.HypeSearch.HypeSearchBean;
+import com.vgroupinc.assignment3.picasso.PicassoImp;
 import com.vgroupinc.assignment3.utils.Utils;
 
 /**
@@ -24,6 +24,7 @@ public class HypeAdapter extends BaseAdapter {
     private ViewHolder holder;
     private Activity activity;
     private LayoutInflater inflater;
+//    private boolean hypable = false;
 
     public HypeAdapter(Context context, HypeSearchBean hypeSearch) {
         this.hypeSearch = hypeSearch;
@@ -49,18 +50,38 @@ public class HypeAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         holder = new ViewHolder();
-        convertView = inflater.inflate(R.layout.list_item, null);
-        holder.imageView = convertView.findViewById(R.id.bg_image);
-        holder.name = convertView.findViewById(R.id.tournamentName);
-        holder.date = convertView.findViewById(R.id.date01);
-        holder.name.setText(hypeSearch.getList().get(position).getName());
-        String date = Utils.formatDate(hypeSearch.getList().get(position).getStartDate());
-        holder.date.setText(date);
-        if (hypeSearch.getList().get(position).getImageKey() != null) {
-            Picasso.with(activity).load(NetworkConfig.IMAGE_DOWNLOAD_URL + hypeSearch.getList().get(position).getImageKey()).placeholder(R.drawable.a02).into(holder.imageView);
+        convertView = inflater.inflate(R.layout.list_item_hype, null);
+        String str = hypeSearch.getList().get(position).getHypableType();
+        if (str.equals("TOURNAMENT")) {
+            holder.imageView = convertView.findViewById(R.id.bg_image);
+            holder.name = convertView.findViewById(R.id.tournamentName);
+            holder.location = convertView.findViewById(R.id.location);
+            holder.game = convertView.findViewById(R.id.game);
+            holder.date = convertView.findViewById(R.id.date01);
+
+            holder.name.setText(hypeSearch.getList().get(position).getName());
+            holder.game.setText(hypeSearch.getList().get(position).getGame());
+            holder.location.setText(hypeSearch.getList().get(position).getVenue());
+            holder.date.setText(Utils.formatDate(hypeSearch.getList().get(position).getStartDate()));
         } else {
-            Picasso.with(activity).load(R.drawable.a04).placeholder(R.drawable.a02).into(holder.imageView);
+            holder.imageView = convertView.findViewById(R.id.bg_image);
+            holder.name = convertView.findViewById(R.id.tournamentName);
+            holder.location = convertView.findViewById(R.id.location);
+            holder.game = convertView.findViewById(R.id.game);
+            holder.date = convertView.findViewById(R.id.date01);
+            holder.location.setVisibility(View.GONE);
+            holder.game.setVisibility(View.GONE);
+            holder.name.setText(hypeSearch.getList().get(position).getName());
+//            String date = Utils.formatDate(hypeSearch.getList().get(position).getStartDate());
+            holder.date.setText(Utils.formatDate(hypeSearch.getList().get(position).getStartDate()));
         }
+
+        PicassoImp.getInstance().setImageBackground(hypeSearch.getList().get(position).getHypableType(),
+                NetworkConfig.IMAGE_DOWNLOAD_URL + hypeSearch.getList().get(position).getImageKey(),
+                activity,
+                position,
+                holder.imageView);
+
         return convertView;
     }
 
@@ -72,6 +93,6 @@ public class HypeAdapter extends BaseAdapter {
 
     private class ViewHolder {
         ImageView imageView = null;
-        TextView name = null, date = null;
+        TextView name = null, date = null, game = null, location = null;
     }
 }
