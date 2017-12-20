@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <include
+        android:id="@+id/mainView"
+        layout="@layout/tab_activity_profile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <RelativeLayout
+        android:id="@+id/menuView"
+        android:layout_width="450dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@drawable/login_signup_bg"
+        android:fitsSystemWindows="true">
+
+
+        <ListView
+            android:id="@+id/list_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/syncToServer"
+            android:layout_alignParentTop="true"
+            android:divider="@color/transparent"
+            android:listSelector="@color/transparent" />
+
+        <TextView
+            android:id="@+id/syncToServer"
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:background="@drawable/login_head"
+            android:elevation="15sp"
+            android:gravity="center"
+            android:text="SYNC TO SERVER"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+
+</android.support.v4.widget.DrawerLayout>

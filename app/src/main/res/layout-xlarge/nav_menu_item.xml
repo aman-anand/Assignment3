@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="vertical"
+    android:padding="6.5sp">
+
+    <TextView
+        android:id="@+id/menuItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/nav_imenu_marginTop_10sp"
+        android:gravity="center"
+
+        android:text="Nares"
+        android:textColor="@color/grey_500"
+        android:textSize="25sp" />
+
+
+</LinearLayout>

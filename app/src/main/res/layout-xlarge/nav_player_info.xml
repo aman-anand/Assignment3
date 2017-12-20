@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/playerName_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/nav_item_marginTop_10sp"
+        android:gravity="center"
+
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/location_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="5sp"
+        android:gravity="center"
+
+        android:textColor="@color/cyan_400"
+        android:textSize="23sp" />
+
+    <ImageView
+        android:id="@+id/sepline_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="0.5sp"
+        android:layout_below="@+id/location_drawer"
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp"
+        android:layout_marginTop="@dimen/nav_item_marginTop_10sp"
+        android:src="@color/grey_500" />
+
+</LinearLayout>
