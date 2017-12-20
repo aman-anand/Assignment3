@@ -13,13 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.landing.LandingPage">
+        <activity android:name=".login.ui.LandingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".splash.SplashActivity"
+            android:name=".login.splash.SplashActivity"
             android:launchMode="singleTask"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -28,16 +28,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".dashboard.ProfileActivity" />
+        <activity android:name=".login.ui.LoginActivity" />
+        <activity android:name=".dashboard.ui.ProfileActivity" />
         <activity
             android:name=".dashboard.BaseDashboard"
             android:label="@string/title_activity_base_dashboard"
-            android:parentActivityName=".login.LoginActivity"
+            android:parentActivityName=".login.ui.LoginActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vgroupinc.assignment3.login.LoginActivity" />
+                android:value="com.vgroupinc.assignment3.login.ui.LoginActivity" />
         </activity>
         <activity
             android:name=".DrawerActivity"

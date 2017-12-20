@@ -15,7 +15,7 @@
         android:background="@drawable/login_signup_bg"
         android:foreground="@drawable/login_pannel_bg">
 
-        <android.support.v7.widget.AppCompatEditText
+        <EditText
             android:id="@+id/messageEditText"
             android:layout_width="match_parent"
             android:layout_height="160dp"
@@ -23,8 +23,8 @@
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:background="@color/transparent"
-            android:foreground="@drawable/nm_bg"
+            android:background="@drawable/nm_bg"
+            android:foreground="@color/transparent"
             android:gravity="start"
             android:hint="@string/notification_message"
             android:maxLength="256"
@@ -32,7 +32,7 @@
             android:textColor="@color/white"
             android:textColorHint="@color/grey"
             android:visibility="gone"
-            app:backgroundTint="@color/transparent" />
+             />
 
         <!--<ImageView-->
         <!--android:layout_width="match_parent"-->

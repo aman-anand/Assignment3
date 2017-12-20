@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.splash;
+package com.vgroupinc.assignment3.login.ui;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,16 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.vgroupinc.assignment3.Network.NetworkRequest;
+import com.vgroupinc.assignment3.base.Network.NetworkRequest;
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.appController.AppController;
 import com.vgroupinc.assignment3.appController.SharedPrefs;
 import com.vgroupinc.assignment3.base.BaseActivity;
-import com.vgroupinc.assignment3.dashboard.ProfileActivity;
+import com.vgroupinc.assignment3.dashboard.ui.ProfileActivity;
 import com.vgroupinc.assignment3.login.bean.LoggedInUser;
 import com.vgroupinc.assignment3.login.bean.User;
 import com.vgroupinc.assignment3.login.callback.ShareLoginStatus;
-import com.vgroupinc.assignment3.ui.landing.LandingPage;
+import com.vgroupinc.assignment3.utils.Utils;
 
 import org.json.JSONException;
 
@@ -32,25 +32,30 @@ public class SplashActivity extends BaseActivity implements ShareLoginStatus {
         }
         context = this;
         User user = SharedPrefs.getUserData(SplashActivity.this);
-        if (user.isLoginStatus()) {
+        if (user.isLoginStatus()&& Utils.checkInternet((Activity) context)) {
             try {
                 NetworkRequest.getInstance(context).login(user.getUsername(), user.getPassword());
             } catch (JSONException e) {
                 e.printStackTrace();
+                gotoLanding();
             }
         } else {
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(SplashActivity.this, LandingPage.class);
-                    startActivity(intent);
-                    finish();
-
-                }
-            }, 2000);
+            gotoLanding();
         }
 
+    }
+
+    private void gotoLanding() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashActivity.this, LandingPage.class);
+                startActivity(intent);
+                finish();
+
+            }
+        }, 2000);
     }
 
     @Override

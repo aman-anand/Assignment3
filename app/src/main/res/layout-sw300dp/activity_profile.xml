@@ -29,7 +29,7 @@
                 <!--android:id="@+id/nmbg"-->
                 <!--android:src="@drawable/nm_bg" />-->
 
-            <android.support.v7.widget.AppCompatEditText
+            <EditText
                 android:id="@+id/messageEditText"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/messageFoll_ET_h_300"
@@ -41,7 +41,7 @@
                 android:visibility="visible"
                 android:textColor="@color/white"
                 android:textColorHint="@color/grey"
-                app:backgroundTint="@color/transparent" />
+                />
         </RelativeLayout>
 
         <!--<ImageView-->

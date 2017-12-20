@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.login;
+package com.vgroupinc.assignment3.login.ui;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,11 +13,11 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.vgroupinc.assignment3.Network.NetworkRequest;
+import com.vgroupinc.assignment3.base.Network.NetworkRequest;
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.appController.AppController;
 import com.vgroupinc.assignment3.appController.SharedPrefs;
-import com.vgroupinc.assignment3.dashboard.ProfileActivity;
+import com.vgroupinc.assignment3.dashboard.ui.ProfileActivity;
 import com.vgroupinc.assignment3.login.bean.LoggedInUser;
 import com.vgroupinc.assignment3.login.bean.User;
 import com.vgroupinc.assignment3.login.callback.ShareLoginStatus;

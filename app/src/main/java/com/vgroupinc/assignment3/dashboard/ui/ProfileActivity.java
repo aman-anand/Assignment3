@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.dashboard;
+package com.vgroupinc.assignment3.dashboard.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -27,9 +27,9 @@ import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.vgroupinc.assignment3.Network.CustomRequest;
-import com.vgroupinc.assignment3.Network.NetworkConfig;
-import com.vgroupinc.assignment3.Network.NetworkRequest;
+import com.vgroupinc.assignment3.base.Network.CustomRequest;
+import com.vgroupinc.assignment3.base.Network.NetworkConfig;
+import com.vgroupinc.assignment3.base.Network.NetworkRequest;
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.appController.AppController;
 import com.vgroupinc.assignment3.appController.SharedPrefs;
@@ -46,8 +46,8 @@ import com.vgroupinc.assignment3.dashboard.bean.UserProfile.UserProfileBean;
 import com.vgroupinc.assignment3.dashboard.bean.notifications.Notifications;
 import com.vgroupinc.assignment3.dashboard.navbar.NavAdapter;
 import com.vgroupinc.assignment3.dashboard.navbar.NavBean;
-import com.vgroupinc.assignment3.login.LoginActivity;
-import com.vgroupinc.assignment3.picasso.PicassoImp;
+import com.vgroupinc.assignment3.login.ui.LoginActivity;
+import com.vgroupinc.assignment3.base.picasso.PicassoImp;
 import com.vgroupinc.assignment3.utils.OnSwipeTouchListener;
 import com.vgroupinc.assignment3.utils.Utils;
 
@@ -271,29 +271,43 @@ public class ProfileActivity extends BaseActivity {
 
             }
         });
+
         tournament.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalCount = 0;
-                changeUI(tournament);
-                setData(TOURNA);
+                if (apiData.getTournaB().getTournaments().getList().size()>0) {
+                    totalCount = 0;
+                    changeUI(tournament);
+                    setData(TOURNA);
+                }else{
+                    changeUI(tournament);
+                }
 
             }
         });
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalCount = 0;
-                changeUI(notification);
-                setData(NOTIF);
+                if (apiData.getNotifB().getNotifications().getList().size()>0) {
+                    totalCount = 0;
+                    changeUI(notification);
+                    setData(NOTIF);
+                }else {
+                    changeUI(notification);
+
+                }
             }
         });
         hype.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalCount = 0;
-                changeUI(hype);
-                setData(HYPE);
+                if (apiData.getHype().getHypeSearch().getList().size()>0){
+                    totalCount = 0;
+                    changeUI(hype);
+                    setData(HYPE);
+                }else {
+                    changeUI(hype);
+                }
             }
         });
         navBtn.setOnClickListener(new View.OnClickListener() {
@@ -709,6 +723,9 @@ public class ProfileActivity extends BaseActivity {
 
 
     private void setData(int choice) {
+        if (canSwipeRight){
+            return;
+        }
         switch (choice) {
             case NOTIF:
                 listView.setDividerHeight(1);

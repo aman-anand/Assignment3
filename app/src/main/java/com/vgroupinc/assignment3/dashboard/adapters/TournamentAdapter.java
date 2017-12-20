@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.dashboard.bean.Tournaments.ActiveTournaments;
-import com.vgroupinc.assignment3.picasso.PicassoImp;
+import com.vgroupinc.assignment3.base.picasso.PicassoImp;
 import com.vgroupinc.assignment3.utils.Utils;
 
 /**

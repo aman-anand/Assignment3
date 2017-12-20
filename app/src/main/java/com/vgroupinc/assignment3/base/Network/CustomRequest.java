@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.Network;
+package com.vgroupinc.assignment3.base.Network;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;

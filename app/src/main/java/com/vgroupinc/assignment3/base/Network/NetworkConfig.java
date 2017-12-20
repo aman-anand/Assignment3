@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.Network;
+package com.vgroupinc.assignment3.base.Network;
 
 /**
  * Created by DELL on 12/4/2017.

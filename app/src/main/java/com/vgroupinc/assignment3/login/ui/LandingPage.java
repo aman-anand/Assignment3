@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.ui.landing;
+package com.vgroupinc.assignment3.login.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +12,8 @@ import android.widget.TextView;
 
 import com.vgroupinc.assignment3.R;
 import com.vgroupinc.assignment3.base.BaseActivity;
-import com.vgroupinc.assignment3.login.LoginActivity;
-import com.vgroupinc.assignment3.ui.landing.adapter.PageAdapter;
-import com.vgroupinc.assignment3.ui.landing.bean.Walkthrough;
+import com.vgroupinc.assignment3.login.landing.adapter.PageAdapter;
+import com.vgroupinc.assignment3.login.landing.bean.Walkthrough;
 
 import java.util.ArrayList;
 import java.util.Timer;

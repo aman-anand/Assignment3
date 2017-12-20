@@ -1,4 +1,4 @@
-package com.vgroupinc.assignment3.picasso;
+package com.vgroupinc.assignment3.base.picasso;
 
 import android.app.Activity;
 import android.content.Context;
@@ -31,18 +31,14 @@ public class PicassoImp {
     public void setImage(Object imageKey, final Context context, int position, final ImageView imageView) {
         int color = Utils.color_array[Utils.getColorPosition(position)];
 
-        if (imageKey != null && !TextUtils.isEmpty(String.valueOf(imageKey))) {
+        if (imageKey != null && !TextUtils.isEmpty(String.valueOf(imageKey))&&Utils.checkInternet((Activity) context)) {
             Picasso.with(context)
                     .load(String.valueOf(imageKey))
                     .error(color)
                     .placeholder(color)
                     .into(imageView);
         } else {
-            Picasso.with(context)
-                    .load(color)
-                    .error(color)
-                    .placeholder(color)
-                    .into(imageView);
+            imageView.setImageResource(color);
         }
 
     }
@@ -56,7 +52,7 @@ public class PicassoImp {
      */
     public void setImageBackground(String hypable, Object imageKey, final Context context, int position, final ImageView imageView) {
         int color = Utils.color_array[Utils.getColorPosition(position)];
-        if (imageKey != null && !TextUtils.isEmpty(String.valueOf(imageKey))) {
+        if (imageKey != null && !TextUtils.isEmpty(String.valueOf(imageKey))&&Utils.checkInternet((Activity) context)) {
             Picasso.with(context)
                     .load(String.valueOf(imageKey))
                     .error(color)
@@ -78,26 +74,7 @@ public class PicassoImp {
                         }
                     });
         } else {
-            Picasso.with(context)
-                    .load(color)
-                    .error(color)
-                    .placeholder(color)
-                    .into(new Target() {
-                        @Override
-                        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                            imageView.setBackground(new BitmapDrawable(context.getResources(), bitmap));
-                        }
-
-                        @Override
-                        public void onBitmapFailed(Drawable errorDrawable) {
-                            imageView.setBackground(errorDrawable);
-                        }
-
-                        @Override
-                        public void onPrepareLoad(Drawable placeHolderDrawable) {
-                            imageView.setBackground(placeHolderDrawable);
-                        }
-                    });
+            imageView.setBackgroundColor(color);
             imageView.setAlpha(0.8f);
         }
         if (hypable.equals("TOURNAMENT")) {

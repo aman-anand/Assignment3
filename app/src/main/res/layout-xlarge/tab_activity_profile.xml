@@ -23,13 +23,9 @@
             android:layout_centerInParent="true"
             android:layout_marginBottom="20sp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/nm_bg" />
 
-            <android.support.v7.widget.AppCompatEditText
+
+            <EditText
                 android:id="@+id/messageEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -42,7 +38,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/grey"
                 android:visibility="visible"
-                app:backgroundTint="@color/transparent" />
+                 />
 
         </RelativeLayout>
 
