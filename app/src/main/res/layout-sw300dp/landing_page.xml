@@ -7,11 +7,11 @@
 
     <LinearLayout
         android:id="@+id/rootLayout"
-        android:tag="300"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/wt1"
         android:orientation="vertical"
+        android:tag="300"
         android:weightSum="2">
 
         <LinearLayout

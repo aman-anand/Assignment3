@@ -13,8 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:background="@color/transparent"
-        android:scaleType="fitXY"
-        />
+        android:scaleType="fitXY" />
 
     <ImageView
         android:id="@+id/sepline"
@@ -46,8 +45,8 @@
         android:id="@+id/description"
         android:layout_width="800dp"
         android:layout_height="0dp"
-        android:layout_below="@+id/heading"
         android:layout_alignParentBottom="true"
+        android:layout_below="@+id/heading"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:gravity="center"

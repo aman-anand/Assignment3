@@ -57,6 +57,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProfileActivity extends BaseActivity {
+
     private final int NOTIF = 0, HYPE = 1, TOURNA = 2, PROFILE = 3;
     private Map<String, String> headers;
     private ProgressBar progressBar;
@@ -121,11 +122,13 @@ public class ProfileActivity extends BaseActivity {
         context = this;
 
         init();
+
+        showProgress();
+        initSwipe();
         networkcallToApi(PROFILE, 0);
         networkcallToApi(TOURNA, 0);
         networkcallToApi(NOTIF, 0);
         networkcallToApi(HYPE, 0);
-        initSwipe();
     }
 
     private void init() {
@@ -283,7 +286,7 @@ public class ProfileActivity extends BaseActivity {
             public void onClick(View v) {
                 if (tournamentSelected)
                     return;
-                if ( apiData.getTournaB().getTournaments() != null) {
+                if (apiData.getTournaB().getTournaments() != null) {
                     totalCount = 0;
                     changeUI(tournament);
                     setData(TOURNA);
@@ -298,7 +301,7 @@ public class ProfileActivity extends BaseActivity {
             public void onClick(View v) {
                 if (notifSelected)
                     return;
-                if ( apiData.getNotifB().getNotifications() != null) {
+                if (apiData.getNotifB().getNotifications() != null) {
                     totalCount = 0;
                     changeUI(notification);
                     setData(NOTIF);
@@ -532,8 +535,8 @@ public class ProfileActivity extends BaseActivity {
         scrollIndicator.setVisibility(View.VISIBLE);
 //        profile_image.setLayoutParams(new RelativeLayout.LayoutParams(fullParams.width,fullParams.height));
         profile_image.setLayoutParams(fullParams);
-        profileLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 0.9f));
-        listLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.1f));
+        profileLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 0.85f));
+        listLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.15f));
         canSwipeLeft = true;
         canSwipeRight = false;
         canSwipeUp = true;
@@ -590,6 +593,12 @@ public class ProfileActivity extends BaseActivity {
                 }
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Utils.hideKeyboard(profileLayout, context);
     }
 
     private void networkcallToApi(int choice, final int page) {
@@ -727,8 +736,8 @@ public class ProfileActivity extends BaseActivity {
                 navBean.setUserName(bean.getPerson().getUsername());
                 navAdapter = new NavAdapter(navBean, (Activity) context);
                 listView_drawer.setAdapter(navAdapter);
-                if (bean.getTwitterUser() != null &&!TextUtils.isEmpty(bean.getTwitterUser().getTwitterHandle())) {
-                    social_id.setText( bean.getTwitterUser().getTwitterHandle());
+                if (bean.getTwitterUser() != null && !TextUtils.isEmpty(bean.getTwitterUser().getTwitterHandle())) {
+                    social_id.setText(bean.getTwitterUser().getTwitterHandle());
                     socialContainer.setVisibility(View.VISIBLE);
 
                 } else if (bean.getTwitchUser() != null) {
@@ -765,6 +774,7 @@ public class ProfileActivity extends BaseActivity {
                 if (apiData.getTournaB().getFirst()) {
                     apiData.setTournaB((ActiveTournaments) object);
                     setData(TOURNA);
+                    hideProgress();
                 } else {
                     apiData.addTournaments((ActiveTournaments) object, page);
                     if (isTab) {
@@ -795,7 +805,7 @@ public class ProfileActivity extends BaseActivity {
                         hideProgress();
                         listView.setAdapter(notificationAdapter);
                     }
-                        listView.setVisibility(View.VISIBLE);
+                    listView.setVisibility(View.VISIBLE);
                 }
                 break;
             case HYPE:

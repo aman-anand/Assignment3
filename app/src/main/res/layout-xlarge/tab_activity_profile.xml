@@ -24,7 +24,6 @@
             android:layout_marginBottom="20sp">
 
 
-
             <EditText
                 android:id="@+id/messageEditText"
                 android:layout_width="match_parent"
@@ -37,8 +36,7 @@
                 android:padding="7dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/grey"
-                android:visibility="visible"
-                 />
+                android:visibility="visible" />
 
         </RelativeLayout>
 
@@ -79,13 +77,13 @@
             android:layout_alignTop="@+id/profile_image"
             android:layout_marginLeft="15sp"
             android:layout_marginTop="90sp"
-            android:fontFamily="@font/futura_tee_bold"
             android:layout_toRightOf="@+id/profile_image"
+            android:fontFamily="@font/futura_tee_bold"
             android:gravity="center"
             android:textAllCaps="true"
-            android:textStyle="bold"
             android:textColor="@color/dark_bg_light_primary_text"
-            android:textSize="@dimen/textSize_PlayerName_400" />
+            android:textSize="@dimen/textSize_PlayerName_400"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/email"

@@ -23,11 +23,11 @@
             android:layout_marginRight="15dp">
 
             <!--<ImageView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:scaleType="fitXY"-->
-                <!--android:id="@+id/nmbg"-->
-                <!--android:src="@drawable/nm_bg" />-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:id="@+id/nmbg"-->
+            <!--android:src="@drawable/nm_bg" />-->
 
             <EditText
                 android:id="@+id/messageEditText"
@@ -38,10 +38,9 @@
                 android:gravity="start"
                 android:hint="@string/notification_message"
                 android:padding="@dimen/message_F_padding_7dp"
-                android:visibility="visible"
                 android:textColor="@color/white"
                 android:textColorHint="@color/grey"
-                />
+                android:visibility="visible" />
         </RelativeLayout>
 
         <!--<ImageView-->
@@ -262,7 +261,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="5dp"
+            android:background="@color/transparent_40" />
     </RelativeLayout>
 
 </LinearLayout>

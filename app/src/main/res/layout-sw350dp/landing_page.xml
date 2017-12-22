@@ -6,11 +6,11 @@
 
     <LinearLayout
         android:id="@+id/rootLayout"
-        android:tag="350"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/wt1"
         android:orientation="vertical"
+        android:tag="350"
         android:weightSum="2">
 
         <LinearLayout

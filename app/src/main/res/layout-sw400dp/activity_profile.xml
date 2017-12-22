@@ -96,17 +96,17 @@
             <LinearLayout
                 android:id="@+id/socialContainer"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="10sp"
-                android:layout_marginRight="10sp"
                 android:layout_height="0dp"
                 android:layout_marginBottom="15sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:visibility="visible">
 
                 <LinearLayout
-                    android:layout_width="0dp"
                     android:id="@+id/twitterContainer"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
@@ -130,28 +130,28 @@
                 </LinearLayout>
 
                 <!--<LinearLayout-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:id="@+id/twitchContainer"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_weight="1">-->
+                <!--android:layout_width="0dp"-->
+                <!--android:id="@+id/twitchContainer"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1">-->
 
-                    <!--<ImageView-->
-                        <!--android:id="@+id/social_icon01"-->
-                        <!--android:layout_width="25sp"-->
-                        <!--android:layout_height="25sp"-->
-                        <!--android:layout_gravity="end"-->
-                        <!--android:layout_marginEnd="5sp"-->
-                        <!--android:layout_marginRight="5sp"-->
-                        <!--android:src="@drawable/twitter_icon" />-->
+                <!--<ImageView-->
+                <!--android:id="@+id/social_icon01"-->
+                <!--android:layout_width="25sp"-->
+                <!--android:layout_height="25sp"-->
+                <!--android:layout_gravity="end"-->
+                <!--android:layout_marginEnd="5sp"-->
+                <!--android:layout_marginRight="5sp"-->
+                <!--android:src="@drawable/twitter_icon" />-->
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/social_id01"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="start"-->
-                        <!--android:textColor="@color/dark_bg_light_primary_text"-->
-                        <!--android:textSize="@dimen/textSize_country_400" />-->
+                <!--<TextView-->
+                <!--android:id="@+id/social_id01"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="start"-->
+                <!--android:textColor="@color/dark_bg_light_primary_text"-->
+                <!--android:textSize="@dimen/textSize_country_400" />-->
                 <!--</LinearLayout>-->
 
 

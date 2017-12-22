@@ -250,9 +250,9 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="@string/signup"
-            android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text3"
@@ -260,10 +260,10 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/text4"
             android:layout_centerHorizontal="true"
-            android:textStyle="bold"
             android:text="@string/use_as_a_guest"
             android:textColor="@color/white"
-            android:textSize="19sp" />
+            android:textSize="19sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text4"
@@ -272,10 +272,10 @@
             android:layout_above="@+id/sep_line"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12sp"
-            android:textStyle="bold"
             android:text="@string/forgot_password"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/sep_line"

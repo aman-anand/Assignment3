@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/heading"
         android:layout_width="match_parent"
-        android:layout_height="50sp"
+        android:layout_height="70sp"
         android:fontFamily="@font/futura_tee_bold"
         android:gravity="center"
         android:text="FOLLOW"
@@ -20,13 +20,12 @@
 
     <ImageView
         android:id="@+id/im_slider"
-        android:layout_width="230sp"
-        android:layout_height="220sp"
+        android:layout_width="160sp"
+        android:layout_height="200sp"
         android:layout_below="@+id/heading"
         android:layout_centerHorizontal="true"
         android:background="@color/transparent"
-        android:scaleType="fitXY"
-        />
+        android:scaleType="fitXY" />
 
     <ImageView
         android:id="@+id/sepline"

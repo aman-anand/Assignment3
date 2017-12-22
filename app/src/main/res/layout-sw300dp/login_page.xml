@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="25sp"
+                android:layout_marginBottom="21sp"
                 android:scaleType="fitXY"
                 android:src="@drawable/login_head" />
 
@@ -57,13 +57,14 @@
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/user_profile_icon"
                 app:civ_border_color="@color/grey"
+
                 app:civ_border_width="1dp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.01">
+            android:layout_weight="1.1">
 
             <LinearLayout
                 android:id="@+id/credentials"
@@ -106,7 +107,8 @@
             android:id="@+id/alter_screen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="0.89"
+            android:visibility="visible">
 
             <LinearLayout
                 android:id="@+id/or_line"
@@ -170,7 +172,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="75sp"
+                android:layout_height="80sp"
                 android:layout_alignParentBottom="true"
                 android:orientation="vertical">
 
@@ -202,7 +204,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/slideMenu_H_300"
         android:layout_gravity="bottom"
-        android:visibility="invisible">
+        android:visibility="visible">
 
         <ImageView
             android:layout_width="match_parent"
@@ -235,56 +237,68 @@
             android:textColor="@color/blue_grey_400"
             android:textSize="@dimen/slideMenu_TS_12sp" />
 
-        <TextView
-            android:id="@+id/text2"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/sep_line"
             android:layout_below="@+id/text1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="7dp"
-            android:text="@string/sign_up"
-            android:textColor="@color/white"
-            android:textSize="@dimen/TS_signUp_17sp" />
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="7dp"
-            android:text="@string/use_as_a_guest"
-            android:textColor="@color/white"
-            android:textSize="@dimen/TS_15sp" />
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="@string/sign_up"
+                android:textColor="@color/white"
+                android:textSize="@dimen/TS_signUp_17sp" />
 
-        <TextView
-            android:id="@+id/text4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text3"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="7dp"
-            android:text="@string/forgot_password"
-            android:textColor="@color/white"
-            android:textSize="@dimen/TS_11sp"
-            tools:ignore="SmallSp" />
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+
+                android:text="@string/use_as_a_guest"
+                android:textColor="@color/white"
+                android:textSize="@dimen/TS_15sp" />
+
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/forgot_password"
+                android:textColor="@color/white"
+                android:textSize="@dimen/TS_11sp"
+                tools:ignore="SmallSp" />
+
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/sep_line"
             android:layout_width="@dimen/slider_sepline_W_300"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text4"
+            android:layout_above="@+id/bb2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/slider_sepline_W_300_MarginTop"
             android:scaleType="fitXY"
             android:src="@drawable/sepline_new" />
 
         <LinearLayout
+            android:id="@+id/bb2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="55dp"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/sep_line"
             android:orientation="horizontal"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
             android:weightSum="3">
 
             <TextView

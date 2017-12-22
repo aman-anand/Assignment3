@@ -29,9 +29,9 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/syncToServer"
             android:layout_alignParentTop="true"
-            android:scrollbars="none"
             android:divider="@color/transparent"
-            android:listSelector="@color/transparent" />
+            android:listSelector="@color/transparent"
+            android:scrollbars="none" />
 
         <TextView
             android:id="@+id/syncToServer"

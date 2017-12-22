@@ -5,8 +5,7 @@
     android:background="@color/transparent"
     android:paddingBottom="14dp"
     android:paddingLeft="7dp"
-    android:paddingRight="7dp"
-    >
+    android:paddingRight="7dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,39 +23,41 @@
             android:background="@color/white"
             android:padding="0.3sp"
             android:scaleType="fitXY" />
-<LinearLayout
-    android:layout_width="300dp"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:layout_centerInParent="true"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/tournamentName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
 
-        android:fontFamily="@font/futura_tee_bold"
-        android:gravity="center"
-        android:singleLine="true"
-        android:textAllCaps="true"
-        android:text="dfjsdflkdf"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/date01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tournamentName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:text="dfjkskdfsdjflsdfsdf"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
-</LinearLayout>
+            <TextView
+                android:id="@+id/tournamentName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+
+                android:fontFamily="@font/futura_tee_bold"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="dfjsdflkdf"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/date01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tournamentName"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="dfjkskdfsdjflsdfsdf"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
 
 
     </RelativeLayout>

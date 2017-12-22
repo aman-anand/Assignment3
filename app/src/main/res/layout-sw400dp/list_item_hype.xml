@@ -5,8 +5,7 @@
     android:background="@color/transparent"
     android:paddingBottom="15sp"
     android:paddingLeft="7sp"
-    android:paddingRight="7sp"
-    >
+    android:paddingRight="7sp">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -71,7 +71,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String s=getResources().getString(R.string.type);
         if (getResources().getBoolean(R.bool.isTablet)) {
             isTab = true;
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);

@@ -167,9 +167,9 @@
             </LinearLayout>
 
             <RelativeLayout
+                android:id="@+id/loginbar"
                 android:layout_width="match_parent"
                 android:layout_height="80sp"
-                android:id="@+id/loginbar"
                 android:layout_alignParentBottom="true"
                 android:orientation="vertical">
 
@@ -187,9 +187,9 @@
                     android:layout_below="@+id/headerImage"
                     android:background="@drawable/sign_login_button"
                     android:gravity="center"
-                    android:textSize="20sp"
                     android:text="LOGIN"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
 
             </RelativeLayout>

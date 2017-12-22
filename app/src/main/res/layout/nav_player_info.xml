@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     android:background="@color/transparent"
     android:gravity="center_horizontal"
-    android:paddingBottom="7dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="7dp">
 
     <TextView
         android:id="@+id/playerName_drawer"
