@@ -32,7 +32,7 @@
                 android:layout_width="130sp"
                 android:layout_height="70sp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30sp"
+                android:layout_marginTop="40sp"
                 android:scaleType="fitXY"
                 android:src="@drawable/registration_logo" />
 
@@ -302,7 +302,7 @@
                 android:gravity="center"
                 android:text="@string/features"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -311,7 +311,7 @@
                 android:gravity="center"
                 android:text="@string/resend_verification_mail"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -320,14 +320,14 @@
                 android:gravity="center"
                 android:text="@string/help"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="15sp" />
         </LinearLayout>
     </RelativeLayout>
 
     <ProgressBar
         android:id="@+id/googleProgressBar"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
         android:layout_gravity="center"
         android:indeterminate="true"
         android:visibility="invisible" />

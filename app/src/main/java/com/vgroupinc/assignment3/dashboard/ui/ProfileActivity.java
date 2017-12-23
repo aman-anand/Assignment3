@@ -13,6 +13,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -56,24 +57,26 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProfileActivity extends BaseActivity {
+public class ProfileActivity extends BaseActivity implements View.OnTouchListener {
 
     private final int NOTIF = 0, HYPE = 1, TOURNA = 2, PROFILE = 3;
-    private Map<String, String> headers;
+    private Map<String, String> headers=new HashMap<>();
     private ProgressBar progressBar;
     private int pastVisiblesItems, visibleItemCount;
     private boolean canSwipeUp = true, canSwipeLeft = true, canSwipeRight = false, canSwipeDown = false;
     private boolean tournamentSelected = false, hypeSelected = false, notifSelected = false, loadMore = false;
     private Context context;
-    private UserProfileBean userProfile;
-    private HypeSearchBean hypeSearch;
-    private ActiveTournaments tournaments;
-    private Notifications notifications;
+    private UserProfileBean userProfile     = new UserProfileBean();
+    private HypeSearchBean hypeSearch       = new HypeSearchBean();
+    private ActiveTournaments tournaments   = new ActiveTournaments();
+    private Notifications notifications     = new Notifications();
     private RelativeLayout profileLayout, listLayout;
     private ImageView navBtn, profile_image, dashLeft, dashRight;
-    private TextView playerName, email, social_id, notification, hype, tournament, messageFollowers, syncToServer, playerName_drawer, location_drawer;
+    private TextView playerName, email, twitterID, notification, hype,
+            tournament, messageFollowers, syncToServer,
+            playerName_drawer, location_drawer,twitchId;
     private ListView listView, listView_drawer;
-    private NavBean navBean;
+    private NavBean navBean=new NavBean();
     private HypeAdapter hypeAdapter;
     private NotificationAdapter notificationAdapter;
     private TournamentAdapter tournamentAdapter;
@@ -82,7 +85,7 @@ public class ProfileActivity extends BaseActivity {
     private int totalCount = 0;
     private Typeface normal, bold;
     private DrawerLayout drawer;
-    private LinearLayout socialContainer, options, scrollIndicator, mainView;
+    private LinearLayout socialContainer, options, scrollIndicator, mainView,twitterContainer,twitchContainer;
     private RelativeLayout.LayoutParams fullParams = new RelativeLayout.LayoutParams(0, 0);
     private RelativeLayout.LayoutParams swipeParams = new RelativeLayout.LayoutParams(0, 0);
     private NavAdapter navAdapter;
@@ -132,12 +135,6 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private void init() {
-        userProfile = new UserProfileBean();
-        hypeSearch = new HypeSearchBean();
-        tournaments = new ActiveTournaments();
-        notifications = new Notifications();
-        navBean = new NavBean();
-        headers = new HashMap<>();
         headers.put(NetworkConfig.HEADER_API_VERSION, NetworkConfig.HEADER_API_VERSION_VALUE + AppController.getInstance().version);
         headers.put(NetworkConfig.HEADER_AUTH, AppController.getInstance().loggedInUser.getKey());
         normal = Typeface.createFromAsset(getAssets(), "fonts/futura_tee.ttf");
@@ -156,6 +153,10 @@ public class ProfileActivity extends BaseActivity {
         location_drawer = findViewById(R.id.location_drawer);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         socialContainer = findViewById(R.id.socialContainer);
+        twitchContainer = findViewById(R.id.twitchContainer);
+        twitterContainer = findViewById(R.id.twitterContainer);
+        twitterContainer.setVisibility(View.GONE);
+        twitchContainer.setVisibility(View.GONE);
         options = findViewById(R.id.options);
         scrollIndicator = findViewById(R.id.scrollIndicator);
         dashLeft = findViewById(R.id.dashLeft);
@@ -168,7 +169,8 @@ public class ProfileActivity extends BaseActivity {
         profile_image = findViewById(R.id.profile_image);
         playerName = findViewById(R.id.playerName);
         email = findViewById(R.id.email);
-        social_id = findViewById(R.id.social_id);
+        twitterID = findViewById(R.id.social_id);
+        twitchId = findViewById(R.id.twitch_id);
         notification = findViewById(R.id.notification);
         hype = findViewById(R.id.hype);
         tournament = findViewById(R.id.tournament);
@@ -491,7 +493,7 @@ public class ProfileActivity extends BaseActivity {
         messageEditText.setText("");
         messageEditText.setVisibility(View.GONE);
         messageFollowers.setVisibility(View.GONE);
-        if (!TextUtils.isEmpty(social_id.getText().toString().trim())) {
+        if (!TextUtils.isEmpty(twitterID.getText().toString().trim())||!TextUtils.isEmpty(twitchId.getText().toString().trim())) {
             socialContainer.setVisibility(View.VISIBLE);
         }
         options.setVisibility(View.VISIBLE);
@@ -542,6 +544,8 @@ public class ProfileActivity extends BaseActivity {
         canSwipeUp = true;
         canSwipeDown = false;
     }
+
+
 
     private void changeUI(TextView textView) {
         switch (textView.getId()) {
@@ -737,11 +741,20 @@ public class ProfileActivity extends BaseActivity {
                 navAdapter = new NavAdapter(navBean, (Activity) context);
                 listView_drawer.setAdapter(navAdapter);
                 if (bean.getTwitterUser() != null && !TextUtils.isEmpty(bean.getTwitterUser().getTwitterHandle())) {
-                    social_id.setText(bean.getTwitterUser().getTwitterHandle());
+                    twitterID.setText(bean.getTwitterUser().getTwitterHandle());
+                    twitterContainer.setVisibility(View.VISIBLE);
                     socialContainer.setVisibility(View.VISIBLE);
-
                 } else if (bean.getTwitchUser() != null) {
                     //handle twitch interface
+                    String s=bean.getTwitchUser().toString();
+                    String [] broken=s.split(",");
+                    String [] broken1=broken[2].split("=");
+                    String name=broken1[1];
+
+                    twitchId.setText(name);
+                    twitchContainer.setVisibility(View.VISIBLE);
+                    socialContainer.setVisibility(View.VISIBLE);
+
                 }
                 break;
             case NOTIF:
@@ -894,4 +907,12 @@ public class ProfileActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (progressBar.isShown()){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

@@ -42,7 +42,7 @@ public abstract class Manager extends BaseActivity {
                 slide_in.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
-                        alter_screen.setVisibility(View.INVISIBLE);
+
                         view.setVisibility(View.VISIBLE);
                     }
 
@@ -52,7 +52,7 @@ public abstract class Manager extends BaseActivity {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-
+                        alter_screen.setVisibility(View.INVISIBLE);
                     }
                 });
 

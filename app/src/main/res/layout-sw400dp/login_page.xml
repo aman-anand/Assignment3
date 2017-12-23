@@ -38,7 +38,7 @@
             <ImageView
                 android:id="@+id/image_logo"
                 android:layout_width="110dp"
-                android:layout_height="50dp"
+                android:layout_height="55dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40sp"
 
@@ -203,7 +203,7 @@
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:layout_gravity="bottom"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <ImageView
             android:layout_width="match_parent"
@@ -282,6 +282,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/sep_line"
             android:orientation="horizontal"
@@ -290,20 +292,20 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.2"
+                android:layout_weight="1.1"
                 android:gravity="center"
                 android:text="FEATURES"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6"
+                android:layout_weight="0.7"
                 android:gravity="center"
                 android:text="RESEND VERIFICATION MAIL"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -312,7 +314,7 @@
                 android:gravity="center"
                 android:text="HELP"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
         </LinearLayout>
     </RelativeLayout>
 

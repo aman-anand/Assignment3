@@ -291,7 +291,8 @@
         <LinearLayout
             android:id="@+id/bottomBar2"
             android:layout_width="match_parent"
-
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
@@ -300,7 +301,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.2"
+                android:layout_weight="1.1"
                 android:gravity="center"
                 android:text="@string/features"
                 android:textColor="@color/white"
@@ -309,7 +310,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6"
+                android:layout_weight="0.7"
                 android:gravity="center"
                 android:text="@string/resend_verification_mail"
                 android:textColor="@color/white"

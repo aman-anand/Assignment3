@@ -19,10 +19,8 @@
         android:id="@+id/sepline"
         android:layout_width="560dp"
         android:layout_height="1dp"
-
         android:layout_below="@+id/im_slider"
         android:layout_centerHorizontal="true"
-
         android:layout_gravity="center"
         android:scaleType="fitXY"
         android:src="@color/grey" />
@@ -31,14 +29,11 @@
         android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_below="@+id/sepline"
-
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:fontFamily="@font/futura_tee_bold"
         android:gravity="center"
-        android:text="FOLLOW"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="21sp"
@@ -53,7 +48,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:gravity="center_horizontal"
-        android:text="get notification from upcoming fields and get that today hello world"
         android:textColor="@color/grey_500"
         android:textSize="18sp" />
 

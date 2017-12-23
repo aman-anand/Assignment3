@@ -65,7 +65,7 @@
     <dimen name="CIV_300_H">55dp</dimen>
     <dimen name="CIV_300_marginTop">142dp</dimen>
     <dimen name="logo_W_350">90sp</dimen>
-    <dimen name="logo_H_350">35sp</dimen>
+    <dimen name="logo_H_350">45sp</dimen>
     <dimen name="TS_login_350">12sp</dimen>
     <dimen name="credentials_W_350">200dp</dimen>
     <dimen name="credentials_marginTop_350">30dp</dimen>

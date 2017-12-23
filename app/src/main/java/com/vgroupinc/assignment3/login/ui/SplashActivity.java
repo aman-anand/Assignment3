@@ -26,7 +26,7 @@ public class SplashActivity extends BaseActivity implements ShareLoginStatus {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (isTab) {
-            setContentView(R.layout.splash);
+            setContentView(R.layout.tab_splash);
         } else {
             setContentView(R.layout.splash);
         }
